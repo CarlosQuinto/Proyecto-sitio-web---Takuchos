@@ -59,6 +59,7 @@
 						<!-- Comienza el panel lateral-->
 						<div class="col-xs-4">
 							<img src="img/Captura.PNG">
+							<?php include('includes/settings.php') ?>
 						</div>
 						<!-- Comienza el panel de edicion-->
 						<div class="col-xs-8">
@@ -66,7 +67,8 @@
 
 	                 			<form id="form-login" action="formularios.php" method="POST">
 	                 				<!-- divide el panel de edicion en 2 secciones.-->
-	                 				<div class="col-xs-6">
+	                 				
+	                 				<div class="col-xs-4">
 	                 					<div>
 					 	  	 				<label id="nombre" for="nombre">Nombre:</label>
 					 	  						<div class="col-xs-12">
@@ -88,9 +90,13 @@
 			                      			</div>
 			                     		</div>
 
+			                     		<div>
+				                    		<input id="ingresar" type="submit" name="ingresar" value="Actualizar">
+				                    	</div>
+
 	                 				</div>
 
-	                 				<div class="col-xs-6">
+	                 				<div class="col-xs-4">
 	                 					<div>
 			                      			<label id="apellidos" for="apellidos">Apellidos:</label>
 			                      	 		<div class="col-xs-12">
@@ -106,9 +112,7 @@
 						 	     		</div>
 
 	                 				</div>
-										<div>
-				                    		<input id="ingresar" type="submit" name="ingresar" value="Actualizar">
-				                    	</div>
+										
 	                    		</form>
 
 						</div>
