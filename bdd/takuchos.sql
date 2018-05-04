@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-05-2018 a las 04:57:41
+-- Tiempo de generación: 04-05-2018 a las 22:42:04
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -58,11 +58,22 @@ CREATE TABLE `tblordenesplatillos` (
 
 CREATE TABLE `tblplatillos` (
   `id` int(11) NOT NULL,
-  `nombre` int(40) NOT NULL,
-  `precio` double(11,11) NOT NULL,
-  `descripcion` varchar(100) COLLATE utf32_bin NOT NULL,
-  `foto` varchar(100) COLLATE utf32_bin NOT NULL
+  `nombre` varchar(40) COLLATE utf32_bin NOT NULL,
+  `precio` double NOT NULL,
+  `descripcion` varchar(100) COLLATE utf32_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+
+--
+-- Volcado de datos para la tabla `tblplatillos`
+--
+
+INSERT INTO `tblplatillos` (`id`, `nombre`, `precio`, `descripcion`) VALUES
+(1, 'Suadero', 10, 'Cada taco.'),
+(2, 'Adobada', 12.5, 'Cada taco.'),
+(3, 'Mixto', 12, 'Cada taco.'),
+(4, 'Longaniza', 12.5, 'Cada taco.'),
+(5, 'ChicharronSV', 15, 'Cada taco.'),
+(6, 'ChicharronSR', 15, 'Cada taco.');
 
 -- --------------------------------------------------------
 
@@ -100,7 +111,9 @@ CREATE TABLE `tblusuarios` (
 
 INSERT INTO `tblusuarios` (`id`, `nombre`, `apellido`, `email`, `contrasena`, `telefono`) VALUES
 (4, 'Carlos', 'Carballo', 'carloscarballod2@gmail.com', '$2y$10$i5/Tt5B7DIENAppfeITymee2OVApfmkUqGccDGIwrilfo61aZBKWO', '6221739331'),
-(5, 'Erik', 'Gonzales', 'ErikPack@gmail.com', '$2y$10$XX.eCMmYHfpwd/G8VQFVDOgk4h0EVn8FeDwxlYTb.WevQ1g8K4dOW', '6221236487');
+(5, 'Erik', 'Gonzales', 'ErikPack@gmail.com', '$2y$10$XX.eCMmYHfpwd/G8VQFVDOgk4h0EVn8FeDwxlYTb.WevQ1g8K4dOW', '6221236487'),
+(6, 'Juan Carlos', 'Almanza', 'jalmanza@gmail.com', '$2y$10$6GQdZO9NCV2RzHs3wQ/RH.NdO/TtXWmOUqZuQlw8Zi3KaYchzmoKi', '6221749302'),
+(7, 'Jorge', 'De la Cruz', 'jorgewarro@gmail.com', '$2y$10$3n23sCSHjhVkwBPso0MfNOoO/CRjBahTfBnARwjkYwCc5.tAHjXZO', '6221859648');
 
 --
 -- Índices para tablas volcadas
@@ -164,7 +177,7 @@ ALTER TABLE `tbltarjetascredito`
 -- AUTO_INCREMENT de la tabla `tblusuarios`
 --
 ALTER TABLE `tblusuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
