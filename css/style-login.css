@@ -1,0 +1,44 @@
+label,
+h1{
+  color: black;
+}
+
+select,
+input
+{
+  height:30px;
+  width:100%;
+  display: inline-block;
+  height: 34px;
+  padding: 0 10px;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 20px;
+  border: 1px solid #d0d7de;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: black;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+
+select:hover,
+input:hover{
+  border-color: green;
+  background-color: #fff;
+  
+}
+select:focus,
+input:focus{
+  border: 2px solid;
+  border-color: #1e5f99;
+  background-color: rgba(186, 191, 243, 0.5);
+  color: black;
+}
+
+label{
+	font-family: "Roboto Condensed", sans-serif;
+	display: inline-block;
+    margin-bottom: 0px;
+    font-weight: 200;
+

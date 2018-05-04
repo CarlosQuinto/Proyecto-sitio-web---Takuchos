@@ -46,6 +46,7 @@
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 			<link rel="stylesheet" href="css/stilos.css"/>
 			<link rel="stylesheet" href="css/style-index.css"/>
+			<link rel="stylesheet" href="css/style-login.css"/>
 
 	</head>
 		<body>

@@ -6,31 +6,31 @@
 </div>
 <div class="row">
 	<div class="col-md-9">
-		<p>Editar Perfil</p>
+		<a href="#">Editar Perfil</a>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-9">
-		<p>Historial de Compra</p>
+		<a href="#">Historial de Compra</a>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-9">
-		<p>Mis direciones</p>
+		<a href="#">Mis direciones</a>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-9">
-		<p>Mis tarjetas</p>
+		<a href="#">Mis tarjetas</a>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-9">
-		<p>Cambiar contraseña</p>
+		<a href="#">Cambiar contraseña</a>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-9">
-		<p>Cerrar Sesion</p>
+		<a href="#">Cerrar Sesion</a>
 	</div>
 </div>
