@@ -1,14 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:800|Poppins:500');
 
 body{
-background-color:#ffffff;
+background-image: url(../img/takuchos.jpg);
+}
+
+footer{
+margin-top: 1350px;
 
 }
 
-
-
 /* Menu */
 
+
+#contenido-menu{
+margin-bottom: 20px;
+margin-top: 50px;
+
+}
 
 #titulo-tacos{
 font-family: 'Open Sans', sans-serif;
@@ -38,6 +46,7 @@ font-family: 'Open Sans', sans-serif;
 #menus{
     font-family: 'Open Sans', sans-serif;
     margin-top: 40px;
+
 }
 #carrito{
      margin-top: 100px;

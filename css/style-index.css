@@ -4,8 +4,10 @@
       font-family: sans-serif;}
 
 	body{
-		background: #fffffa;
+		background-image: url(../img/takuchos.jpg);
+
 	}
+
 
 	header{
 		width: 100%;
@@ -220,3 +222,10 @@ footer{
 	{ 
 	text-decoration:none; 
 	} 
+
+.imgindex{
+	width: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+   border-radius: 30%;
+}

@@ -1,7 +1,18 @@
+            
+
             <?php if(!isset($_SESSION)){
-                session_start();
-               
+                session_start();             
             } ?>
+
+			<?php if(!isset($_SESSION['userId'])){
+                
+              header("Location: formularios.php");
+
+            } ?>	
+
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -67,13 +78,16 @@
 		    <div id="menus" class="col-xs-12">
 		    	<!--  Nose si deba ser un formulario  -->
 		    	<center>
-		    		<div id="menu-tacos" class="col-xs-6">
+
+						<div id="menu-tacos" class="col-xs-6">
+
+					<form action="menu.php" method="POST">
 		    		<div >
 		    			<h4>
 		    			 Suadero	
 		    			</h4>
 		    			<p>
-		    			 Orden de 4 tacos | $40.00
+		    			 Taco de suadero | $10.00
 		    			</p>
 		    			  
 				 	  	 <label id="cantidad" for="suadero">Cantidad:</label>
@@ -81,46 +95,57 @@
 				 	  	 <input id="campos-menu" type="number" name="suadero" />
 				 	  	 
 				 	  	 <button id="botones-menu" type="submit" name="orden-suadero" >Agregar</button>
-		    			 
-		    			
-		    		  </div>
-		    		  <div >
+				 	  	 </div>
+					</form>
+
+					<form action="menu.php" method="POST">
+						
+                     <div >
 		    			<h4>
 		    			 Adobada	
 		    			</h4>
 		    			<p>
-		    			 Orden de 4 tacos | $50.00
+		    			 Taco de adobada | $10.00
 		    			</p>
 		    			  
 				 	  	 <label id="cantidad" for="adobada">Cantidad:</label>
 				 	  	 
 				 	  	 <input id="campos-menu" type="number" name="adobada" />
 				 	  	 
-				 	  	 <button id="botones-menu" type="submit" name="orden-adobada" >Agregar</button>
-		    			 
-		    			
+				 	  	 <button id="botones-menu" type="submit" name="orden-adobada" >Agregar
+				 	  	 </button>
 		    		  </div>
-		    		  <div >
+
+
+					</form>
+
+					<form action="menu.php" method="POST">
+						<div >
 		    			<h4>
 		    			 Mixto	
 		    			</h4>
 		    			<p>
-		    			 Orden de 4 tacos | $48.00
+		    			 Taco Mixto| $18.00
 		    			</p>
 		    			  
 				 	  	 <label id="cantidad" for="mixto">Cantidad:</label>
 				 	  	 
 				 	  	 <input id="campos-menu" type="number" name="mixto" />
 				 	  	 
-				 	  	 <button id="botones-menu" type="submit" name="orden-mixto" >Agregar</button>
+				 	  	 <button id="botones-menu" type="submit" name="orden-mixto" >Agregar
+				 	  	 </button>
 		    			
 		    		  </div>
-		    		   <div >
+
+					</form>
+
+					<form action="menu.php" method="POST">
+						<div >
 		    			<h4>
 		    			 Longaniza	
 		    			</h4>
 		    			<p>
-		    			 Orden de 4 tacos | $50.00
+		    			 Taco de Longaniza | $10.00
 		    			</p>
 		    			  
 				 	  	 <label id="cantidad" for="longaniza">Cantidad:</label>
@@ -130,7 +155,11 @@
 				 	  	 <button id="botones-menu" type="submit" name="orden-longaniza" >Agregar</button>
 		    			
 		    		  </div>
-		    		  <div >
+
+					</form>
+
+					<form action="menu.php" method="POST">
+						<div >
 		    			<h4>
 		    			 Chicharron	
 		    			</h4>
@@ -138,7 +167,7 @@
 		    			 Salsa verde	
 		    			</h5>
 		    			<p>
-		    			 Orden de 4 tacos | $60.00
+		    			 Taco de Chicharron Salsa verde | $10.00
 		    			</p>
 		    			  
 				 	  	 <label id="cantidad" for="chicharronsv">Cantidad:</label>
@@ -148,7 +177,12 @@
 				 	  	 <button id="botones-menu" type="submit" name="orden-chicharronsv" >Agregar</button>
 		    			
 		    		  </div>
-		    		  <div >
+
+					</form>
+
+					<form action="menu.php" method="POST">
+						
+						<div >
 		    			<h4>
 		    			 Chicharron	
 		    			</h4>
@@ -156,7 +190,7 @@
 		    			 Salsa roja	
 		    			</h5>
 		    			<p>
-		    			 Orden de 4 tacos | $60.00
+		    			 Taco de Chicharron Salsa Roja | $10.00
 		    			</p>
 		    			  
 				 	  	 <label id="cantidad" for="chicharronss">Cantidad:</label>
@@ -166,12 +200,14 @@
 				 	  	 <button id="botones-menu" type="submit" name="orden-chicharronss" >Agregar</button>
 		    			
 		    		  </div>
+					</form>
 
 		    	 </div>
 		    	
 		    	
 		    	<div id="menu-bebidas" class="col-xs-6">
-		    		<div >
+		    		<form action="">
+		    			<div >
 		    			<h4>
 		    			 Horchata	
 		    			</h4>
@@ -187,7 +223,10 @@
 		    			 
 		    			
 		    		  </div>
-		    		  <div >
+
+		    		</form>
+		    		  <form action="menu.php" method="POST">
+		    		  	<div >
 		    			<h4>
 		    			 Jamaica	
 		    			</h4>
@@ -202,7 +241,10 @@
 				 	  	 <button id="botones-menu" type="submit" name="orden-jamaica" >Agregar</button>
 		    			 
 		    		  </div>
-		    		   <div >
+		    		  </form>
+
+		    		   <form action="menu.php" method="POST">
+		    		   	<div >
 		    			<h4>
 		    			 Melón	
 		    			</h4>
@@ -217,7 +259,10 @@
 				 	  	 <button id="botones-menu" type="submit" name="orden-melon" >Agregar</button>
 		    			 
 		    		  </div>
-		    		   <div >
+		    		   </form>
+		    		   
+		    		   <form action="menu.php" method="POST">
+		    		   	<div >
 		    			<h4>
 		    			 Té de limón	
 		    			</h4>
@@ -232,7 +277,10 @@
 				 	  	 <button id="botones-menu" type="submit" name="orden-tedelimon" >Agregar</button>
 		    			 
 		    		  </div>
-		    		  <div >
+		    		   </form>
+
+		    		  <form action="menu.php" method="POST">
+		    		  	<div >
 		    			<h4>
 		    			 Coca-cola	
 		    			</h4>
@@ -250,7 +298,11 @@
 				 	  	 <button id="botones-menu" type="submit" name="orden-cocacolav" >Agregar</button>
 		    			 
 		    		  </div>
-		    		  <div >
+		    		  </form>
+
+
+		    		  <form action="menu.php" method="POST">
+		    		  	<div >
 		    			<h4>
 		    			 Coca-cola	
 		    			</h4>
@@ -268,6 +320,7 @@
 					 	  	 <button id="botones-menu" type="submit" name="orden-cocacola" >Agregar</button>
 		    			 
 		    		  </div>
+		    		  </form>
 
 		    		  
 		    	</div>

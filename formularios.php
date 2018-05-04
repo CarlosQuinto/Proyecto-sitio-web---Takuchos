@@ -1,10 +1,17 @@
 			<?php include('conexiones/conexionLocalhost.php') ?>
 			<?php include('funciones/funciones.php') ?>
 
+
             <?php if(!isset($_SESSION)){
                 session_start();
-                header("Location: profile.php?login=true");
+               
             } ?>
+
+			<?php if(isset($_SESSION['userId'])){
+                
+              header("Location: profile.php?login=true");
+            } ?>	
+
 
 
 <?php 
