@@ -10,7 +10,7 @@
 
 			<?php if(isset($_SESSION['userId'])){
                 
-              header("Location: profile.php?login=true");
+              header("Location: profile-editar_perfil.php?login=true");
             } ?>	
 
 
@@ -30,7 +30,7 @@
       	echo $_SESSION['userEmail'];
       	echo $_SESSION['userFullName'];
       	echo $_SESSION['userCellPhone'];
-      	header("Location: profile.php?login=true");
+      	header("Location: profile-editar_perfil.php?login=true");
 		}else{
 			echo "Chito puto";
 		}

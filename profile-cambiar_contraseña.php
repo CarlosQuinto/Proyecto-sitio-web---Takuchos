@@ -1,5 +1,5 @@
-			<?php include('../conexiones/conexionLocalhost.php') ?>
-			<?php include('../funciones/funciones.php') ?>
+			<?php include('conexiones/conexionLocalhost.php') ?>
+			<?php include('funciones/funciones.php') ?>
 
 
             <?php if(!isset($_SESSION)){
@@ -18,24 +18,24 @@
 			 ?>
 
 		</title>
-		     <link rel="stylesheet" href="../css/stilosperfil.css"/>
+		     <link rel="stylesheet" href="css/stilosperfil.css"/>
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-			<link rel="stylesheet" href="../css/style.css"/>
+			<link rel="stylesheet" href="css/style.css"/>
 			
 			
 
 	</head>
 		<body>
 
-			<?php include('../includes/header.php') ?>
+			<?php include('includes/header.php') ?>
 
 			<div  id="contenido-e-p" class="col-xs-12">
 				<div  class="col-xs-4">
 					<h4>OPCIONES</h4>
 					
 				    <ul >
-						<li><a href="">EDITAR PERFIL</a></li>
-					    <li><a href="">AGREGAR TARJETA</a></li>
+						<li><a href="profile-editar_perfil.php">EDITAR PERFIL</a></li>
+					    <li><a href="profile-agregar_tarjeta.php">AGREGAR TARJETA</a></li>
 					    <li><a href="">TARJEAS</a></li>
 					    <li><a href="">HISTORIAL DE PEDIDOS</a></li>
 					
@@ -100,7 +100,7 @@
 			
  <div class="col-xs-12">
  	<?php 
-	include('../includes/footer.php');
+	include('includes/footer.php');
  ?>
  </div>
 

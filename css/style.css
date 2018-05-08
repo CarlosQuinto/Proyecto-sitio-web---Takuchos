@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:800|Poppins:500');
 
 body{
-
+font-family: 'Open Sans', sans-serif; 
 background-image: url(../img/takuchos.jpg);
 }
 
@@ -55,7 +56,7 @@ Footer
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif; 
 }
 
 footer{
@@ -188,7 +189,6 @@ footer{
 
 /* Menu */
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:800|Poppins:500');
 
 .margenMenu{
     margin-bottom: 30px; 
@@ -298,4 +298,76 @@ color: #04B486;
     color: #FE2E2E;
     padding-left: 70px;
     font-size: 12px;
+}
+
+
+/*  mapa y galeria */
+
+* {
+  
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#mapa-ubicacion{
+   
+
+}
+
+.contenedor-slider {
+ 
+  margin: auto;
+  width: 85%;
+  max-width: 500px;
+  max-height: 450px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 0 10px #fff,
+ 0 15px 50px;
+}
+
+.slider {
+  display: flex;
+  width: 1600%;
+
+}
+
+.slider section {
+  width: 100%;
+}
+
+.slider img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-prev, .btn-next {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  line-height: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  font-family: monospace;
+  cursor: pointer;
+}
+
+.btn-prev:hover, .btn-next:hover {
+  background: white;
+}
+
+.btn-prev {
+  left: 10px;
+}
+
+.btn-next {
+  right: 10px;
 }

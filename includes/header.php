@@ -22,7 +22,7 @@
 					<?php
 					}else{
 						?>
-							<a href="profile/profile-editar_perfil.php"><li class="col-md-6 col-lg-3 cambiarColor">
+							<a href="profile-editar_perfil.php"><li class="col-md-6 col-lg-3 cambiarColor">
 								
 							<?php 
 							echo $_SESSION['userFullName'];

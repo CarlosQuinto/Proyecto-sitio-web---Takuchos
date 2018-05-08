@@ -31,7 +31,7 @@ function moverI() {
 function autoplay() {
 	interval = setInterval(function(){
 		moverD();
-	}, 3000);
+	}, 5000);
 }
 siguiente.on('click',function() {
 	moverD();
