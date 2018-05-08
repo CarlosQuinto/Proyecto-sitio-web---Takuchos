@@ -6,86 +6,83 @@
 
 			<?php if(!isset($_SESSION['userId'])){
                 
-              header("Location: login.php");
+              header("Location: formularios.php");
 
             } ?>	
+
+
+
+
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Los Takuchos - Menu</title>
+	<title>Menu</title>
 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<?php include('conexiones/conexionLocalhost.php') ?>
-		<?php include("funciones/funciones.php") ?>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/stilosmenu.css"/>
+<link rel="stylesheet" type="text/css" href="css/style-index.css">
 </head>
 <body>
 
-		<?php crearOrden($_SESSION['userId'],$conexion);?>
-
-		<?php $lastId = faramallaMeca($_SESSION['userId'],$conexion);?>
-
-		<script type="text/javascript" src="js/jQuery.min.js"></script>
-
-		<script type="text/javascript">
-			
-			function anadirCarrito(pTaco, campoTaco, descripcion, ultimaOrden){
-				var cantidad = document.getElementsByName(campoTaco)[0].value;
-				if (cantidad <= 0) {
-					alert("No ingresese cantidades negativas.");
-				}else{
-
-					var total = pTaco * cantidad;
-
-					$.ajax({
-						url: "funciones/anadirPlatillo.php",
-						type: "POST",
-						data: {total:total,descripcion:descripcion,cantidad:cantidad,ultimaOrden:ultimaOrden},
-						success:function(){
-							alert("Agregada a la orden");
-						}});		
-
-					$.ajax({
-						url: "includes/tabla.php",
-						type: "POST",
-						data: {total:total,descripcion:descripcion,cantidad:cantidad,ultimaOrden:ultimaOrden},
-						success:function(){
-							$('#nuevaFila').load('includes/tabla.php',{total:total,descripcion:descripcion,cantidad:cantidad,ultimaOrden:ultimaOrden});
-							$('#botonCompra').load('includes/botonCompra.php');
-						}});	
-
-				}}
-
-		</script>
-
 	<?php include("includes/header.php") ?>
 
+   <div id="contenido-menu" class="col-xs-12">
+   	 
+   	    <div id="titulos-menu" class="col-xs-12">
+			<center>
+			  
+			 <div id="titulo-tacos">
+			 	<h2 class="col-xs-6">
+	               Tacos
+		        </h2>
+		        
+			 </div>
 
-		    <div id="menus" class="col-lg-12">
-		    	
+		     <div id="titulo-bebidas">
+
+		     	<h2 class="col-xs-6">
+			       Bebidas
+		       </h2>
+
+		     </div>
+		       
+
+
+		    </center>
+        </div>
+
+		    <div id="fotos-menu" class="col-xs-12">
+		    	<center>
+		    		<div class="col-xs-6">
+		        	<figure> 
+                      <img id="img-tacos" src="img/tacos.jpg"/> 
+                     <!--
+                      <figcaption> 
+                           poner aqui pie de imagen.
+                      </figcaption>
+                      -->
+		         </div>
+		         <div class="col-xs-6">
+		        	<figure> 
+                      <img id="img-bebidas" src="img/bebidas.jpg"/> 
+                      <!--
+                      <figcaption> 
+                           poner aqui pie de imagen.
+                      </figcaption>
+                      -->
+		         </div>
+		    	</center>
+		    	 
+		    </div>
+		    <div id="menus" class="col-xs-12">
+		    	<!--  Nose si deba ser un formulario  -->
 		    	<center>
 
-						<div id="menu-tacos" class="col-lg-6">
+						<div id="menu-tacos" class="col-xs-6">
 
-   	    <div id="titulos-menu" class="col-lg-12">
-
-			 <div id="titulo-tacos">
-			 	<h2 class="col-lg-12">
-	               Tacos
-		        </h2>   
-			 </div>
-        </div>
-		    	<div id="fotos-menu" class="col-lg-12">
-			    	<div class="col-lg-12">
-			        	<img id="img-tacos" src="img/tacos.jpg"/> 
-			        </div>
-		    	</div>
-					
-
-					<form method="POST">
-		    		<div class="margenMenu">
+					<form action="menu.php" method="POST">
+		    		<div >
 		    			<h4>
 		    			 Suadero	
 		    			</h4>
@@ -93,17 +90,17 @@
 		    			 Taco de suadero | $10.00
 		    			</p>
 		    			  
-				 	  	 <label id="cantidad">Cantidad:</label>
+				 	  	 <label id="cantidad" for="suadero">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoSuadero" />
+				 	  	 <input id="campos-menu" type="number" name="suadero" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-suadero" value="Agregar" onclick="anadirCarrito(10, 'campoSuadero','Suadero', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-suadero" >Agregar</button>
 				 	  	 </div>
 					</form>
 
-					<form method="POST">
+					<form action="menu.php" method="POST">
 						
-                     <div class="margenMenu">
+                     <div >
 		    			<h4>
 		    			 Adobada	
 		    			</h4>
@@ -113,16 +110,17 @@
 		    			  
 				 	  	 <label id="cantidad" for="adobada">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoAdobada" />
+				 	  	 <input id="campos-menu" type="number" name="adobada" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" value="Agregar" name="orden-adobada" onclick="anadirCarrito(10,'campoAdobada','Adobada', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-adobada" >Agregar
+				 	  	 </button>
 		    		  </div>
 
 
 					</form>
 
-					<form method="POST">
-						<div class="margenMenu">
+					<form action="menu.php" method="POST">
+						<div >
 		    			<h4>
 		    			 Mixto	
 		    			</h4>
@@ -132,16 +130,17 @@
 		    			  
 				 	  	 <label id="cantidad" for="mixto">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoMixto" />
+				 	  	 <input id="campos-menu" type="number" name="mixto" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-mixto" value="Agregar" onclick="anadirCarrito(18,'campoMixto','Mixto', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-mixto" >Agregar
+				 	  	 </button>
 		    			
 		    		  </div>
 
 					</form>
 
-					<form method="POST">
-						<div class="margenMenu">
+					<form action="menu.php" method="POST">
+						<div >
 		    			<h4>
 		    			 Longaniza	
 		    			</h4>
@@ -151,16 +150,16 @@
 		    			  
 				 	  	 <label id="cantidad" for="longaniza">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoLonganiza" />
+				 	  	 <input id="campos-menu" type="number" name="longaniza" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-longaniza" value="Agregar" onclick="anadirCarrito(10,'campoLonganiza','Longaniza', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-longaniza" >Agregar</button>
 		    			
 		    		  </div>
 
 					</form>
 
-					<form method="POST">
-						<div class="margenMenu">
+					<form action="menu.php" method="POST">
+						<div >
 		    			<h4>
 		    			 Chicharron	
 		    			</h4>
@@ -173,17 +172,17 @@
 		    			  
 				 	  	 <label id="cantidad" for="chicharronsv">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoChicharronsv" />
+				 	  	 <input id="campos-menu" type="number" name="chicharronsv" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-chicharronsv" value="Agregar" onclick="anadirCarrito(10,'campoChicharronsv','ChicharronSV', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-chicharronsv" >Agregar</button>
 		    			
 		    		  </div>
 
 					</form>
 
-					<form method="POST">
+					<form action="menu.php" method="POST">
 						
-						<div class="margenMenu">
+						<div >
 		    			<h4>
 		    			 Chicharron	
 		    			</h4>
@@ -196,32 +195,19 @@
 		    			  
 				 	  	 <label id="cantidad" for="chicharronss">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoChicharronss" />
+				 	  	 <input id="campos-menu" type="number" name="chicharronss" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-chicharronss" value="Agregar" onclick="anadirCarrito(10,'campoChicharronss','ChicharronSR', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-chicharronss" >Agregar</button>
+		    			
 		    		  </div>
 					</form>
 
 		    	 </div>
 		    	
 		    	
-		    	<div id="menu-bebidas" class="col-lg-6">
-
-			   	    <div id="titulos-menu" class="col-lg-12">
-						<div id="titulo-bebidas">
-					  		<h2 class="col-lg-12">
-								Bebidas
-					 		 </h2>
-						</div>  
-			        </div>
-							<div id="fotos-menu" class="col-lg-12">
-						        <div class="col-lg-12">
-						        	<img id="img-bebidas" src="img/bebidas.jpg"/> 
-						        </div> 
-					    	</div> 
-	
-		    		<form method="POST">
-		    			<div class="margenMenu">
+		    	<div id="menu-bebidas" class="col-xs-6">
+		    		<form action="">
+		    			<div >
 		    			<h4>
 		    			 Horchata	
 		    			</h4>
@@ -231,15 +217,16 @@
 		    			  
 				 	  	 <label id="cantidad" for="horchata">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoHorchata" />
+				 	  	 <input id="campos-menu" type="number" name="horchata" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-horchata" value="Agregar" onclick="anadirCarrito(10,'campoHorchata','Agua de horchata', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-horchata" >Agregar</button>
+		    			 
 		    			
 		    		  </div>
 
 		    		</form>
-		    		  <form method="POST">
-		    		  	<div class="margenMenu">
+		    		  <form action="menu.php" method="POST">
+		    		  	<div >
 		    			<h4>
 		    			 Jamaica	
 		    			</h4>
@@ -249,15 +236,15 @@
 		    			  
 				 	  	 <label id="cantidad" for="jamaica">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoJamaica" />
+				 	  	 <input id="campos-menu" type="number" name="jamaica" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-jamaica" value="Agregar" onclick="anadirCarrito(10,'campoJamaica','Agua de jamaica', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-jamaica" >Agregar</button>
 		    			 
 		    		  </div>
 		    		  </form>
 
-		    		   <form method="POST">
-		    		   	<div class="margenMenu">
+		    		   <form action="menu.php" method="POST">
+		    		   	<div >
 		    			<h4>
 		    			 Melón	
 		    			</h4>
@@ -267,15 +254,15 @@
 		    			  
 				 	  	 <label id="cantidad" for="melon">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoMelon" />
+				 	  	 <input id="campos-menu" type="number" name="melon" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-melon" value="Agregar" onclick="anadirCarrito(10,'campoMelon','Agua de melon', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-melon" >Agregar</button>
 		    			 
 		    		  </div>
 		    		   </form>
 		    		   
-		    		   <form method="POST">
-		    		   	<div class="margenMenu">
+		    		   <form action="menu.php" method="POST">
+		    		   	<div >
 		    			<h4>
 		    			 Té de limón	
 		    			</h4>
@@ -285,15 +272,15 @@
 		    			  
 				 	  	 <label id="cantidad" for="tedelimon">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoTedelimon" />
+				 	  	 <input id="campos-menu" type="number" name="tedelimon" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-tedelimon" value="Agregar" onclick="anadirCarrito(10,'campoTedelimon','Te de limon', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-tedelimon" >Agregar</button>
 		    			 
 		    		  </div>
 		    		   </form>
 
-		    		  <form method="POST">
-		    		  	<div class="margenMenu">
+		    		  <form action="menu.php" method="POST">
+		    		  	<div >
 		    			<h4>
 		    			 Coca-cola	
 		    			</h4>
@@ -306,16 +293,16 @@
 		    			  
 				 	  	 <label id="cantidad" for="cocacolav">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoCocacolav" />
+				 	  	 <input id="campos-menu" type="number" name="cocacolav" />
 				 	  	 
-				 	  	 <input id="botones-menu" type="button" name="orden-cocacolav"  value="Agregar" onclick="anadirCarrito(10,'campoCocacolav','Coca Cola 500 ml', '<?php echo $lastId ?>');">
+				 	  	 <button id="botones-menu" type="submit" name="orden-cocacolav" >Agregar</button>
 		    			 
 		    		  </div>
 		    		  </form>
 
 
-		    		  <form method="POST">
-		    		  	<div class="margenMenu">
+		    		  <form action="menu.php" method="POST">
+		    		  	<div >
 		    			<h4>
 		    			 Coca-cola	
 		    			</h4>
@@ -328,57 +315,39 @@
 		    			  
 				 	  	 <label id="cantidad" for="cocacola">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoCocacola" />
+				 	  	 <input id="campos-menu" type="number" name="cocacola" />
 				 	  	 
-					 	  	 <input id="botones-menu" type="button" name="orden-cocacola" value="Agregar" onclick="anadirCarrito(15,'campoCocacola','Coca Cola 600 ml', '<?php echo $lastId ?>');">
+					 	  	 <button id="botones-menu" type="submit" name="orden-cocacola" >Agregar</button>
 		    			 
-		    		  		</div>
-		    		  	</form>
+		    		  </div>
+		    		  </form>
 
 		    		  
-		    			</div>
-		    		</center>		         
+		    	</div>
+		    	</center>
+
+		    	<div id="carrito" class="col-xs-12">
+		    	  <center>
+		    	  	<div class="col-xs-6">
+		    	  	<h2>Tu orden</h3>
+		    	  </div>
+		    	  
+		    	  <div class="col-xs-6" id="botones-carrito">
+		    	    
+		    	  	<button id="boton-ordenar" type="submit" name="ordenar" >Ordenar</button>
+		    	  	<a id="cancelar" href="#">Cancelar orden</a>
+		    	  </div>
+		    	  </center>
+		    	  
+		         
 		        </div>
 
-				<div class="col-lg-1">
-					
-				</div>
-
-		        <div class="col-lg-10 carrito">
-					
-					<div>
-						<div id="nuevaFila" class="col-lg-12">
-							<h2>Tu orden</h2>
-
-						</div>
-					</div>
-
-
-					</div>
-		        
-
-		        </div>
-
-
-				<div class="col-lg-1">
-					
-				</div>
-
-<div class="col-lg-12" style="margin-bottom: 20px;">
-	<center>
-	<label id="botonCompra">
-		
-
-	</label>
-	</center>
-
-</div>
+		    </div>
 		    
-<div class="col-lg-12">
-		<?php include('includes/footer.php') ?>
-</div>
+
+   </div>
+
+		<?php include("includes/footer.php") ?>
 
 </body>
 </html>
-
-</script>

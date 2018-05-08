@@ -1,4 +1,3 @@
-
 			<?php include('conexiones/conexionLocalhost.php') ?>
 			<?php include('funciones/funciones.php') ?>
 
@@ -37,56 +36,44 @@
 	}
  ?>
 
-<?php 
-if (isset($_POST['sent'])) {
-	$nombre = $_POST['nombre'];
-	$apellidos = $_POST['apellidos'];
-	$telefono = $_POST['telefono'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	$cpassword = $_POST['cpassword'];
-if($password == $cpassword){
-	registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);
-}else{echo "The passwords doesn´t match.";}}
-?>
+
+
 
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Los Takuchos - Inciar sesion</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/style-login.css"/>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
-<body>
+	<head>
+		<title></title>
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<link rel="stylesheet" href="css/stilos.css"/>
+			<link rel="stylesheet" href="css/style-index.css"/>
+
+	</head>
+		<body>
 
 			<?php include('includes/header.php') ?>
 
-
-
-
-		<div id="contenido" class="col-lg-12">
-				<div id="contenido-main" class="col-lg-12">
-
-					<div class="col-lg-1">
-						
-					</div>
-
+			<div id="contenido" class="col-xs-12">
+				<div id="contenido-titulos">
 					<center>
-						<div class="col-lg-5 borde iniciarsesion" id="contenido-iniciar-sesion">
+			       		<h2 class="col-xs-6">Iniciar sesión</h2>
+			       		<h2 class="col-xs-6">Crea tu cuenta</h2>
+			    	</center>
+				</div>
+				<div id="contenido-main" class="col-xs-12">
+					<center>
+						<div class="col-xs-6" id="contenido-iniciar-sesion">
 	                		 <div>
-	                 			 <h2 id="contenido-titulos">Iniciar sesión</h2></div>
-	                		 <div>
-	                 			 <strong><p id="descripcion-i-s">Usa tu correo y contraseña para iniciar sesión</p></strong></div>
+	                 			 <p id="descripcion-i-s">Usa tu correo y contraseña para iniciar sesión</p>
+	                		 </div>
 	                 		<div id="contenido-formularios">
-	                 			<form id="form-login" action="login.php" method="POST">
+	                 			<form id="form-login" action="formularios.php" method="POST">
 					 	  			<div>
 					 	  	 			<label id="correo" for="email">Correo:</label>
-					 	  				<div class="col-lg-12">
+					 	  				<div class="col-xs-12">
 					 	  	 				<input id="campo" type="text" name="iemail" />
 					 	  	 			</div>
 					 	  			</div>         
-			                    	<div class="col-lg-12">
+			                    	<div>
 			                      		<label id="contrasena" for="password">Contraseña:</label>
 			                      	 	<div>
 			                      		<input id="campo" type="password" name="ipassword" />
@@ -100,19 +87,12 @@ if($password == $cpassword){
 	                 		</div>
 				  		</div>  
 
-					<div class="col-lg-1">
-						
-					</div>
-
-						<div class="col-lg-4 borde" id="contenido-registrarse"> 
-	                		 <div>
-	                 			 <h2 id="contenido-titulos">Iniciar sesión</h2></div>
-	                		 <div>
+						<div class="col-xs-6" id="contenido-registrarse"> 
 				       		<div>
 				       	 		<p id="descripcion-r"><strong>Con tu cuenta podras estar mas al tanto de las promociones de "Los Takuchos"</strong></p>
 				       		</div>
 	                    	<div id="contenido-formulario-registrarse">
-	                     		<form id="form-singup" action="login.php" method="POST">
+	                     		<form id="form-singup" action="formularios.php" method="POST">
 		                     		<div>
 		                      	  		<label id="nombre" for="nombre">Nombre:</label>
 		                      	   		<div>
@@ -127,13 +107,13 @@ if($password == $cpassword){
 		                         	</div>
 		                     	 	<div>
 						 	  	 		<label id="telefono" for="telefono">Telefono:</label>
-						 	  	 		<div >
+						 	  	 		<div class="col-xs-12">
 						 	  	 			<input id="campo" type="text" name="telefono" />
 						 	  			</div>
 						 	     	</div>
 		                     	 	<div>
 						 	  			<label id="correo" for="email">Correo:</label>
-						 	  			<div >
+						 	  			<div class="col-xs-12">
 						 	  	 			<input id="campo" type="text" name="email" />
 						 	  			</div>
 						 	     	</div>
@@ -159,12 +139,23 @@ if($password == $cpassword){
 				</div>
 			</div>
 
+			<?php include('includes/footer.php') ?>
 
-<div class="col-lg-12 footerE">
-		<?php include('includes/footer.php') ?>
-</div>
-
-
-
-</body>
+		</body>
 </html>
+
+<?php 
+if (isset($_POST['sent'])) {
+	$nombre = $_POST['nombre'];
+	$apellidos = $_POST['apellidos'];
+	$telefono = $_POST['telefono'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	$cpassword = $_POST['cpassword'];
+if($password == $cpassword){
+	registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);
+}else{echo "The passwords doesn´t match.";}}
+?>
+
+
+
