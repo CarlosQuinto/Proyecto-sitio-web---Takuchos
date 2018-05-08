@@ -34,7 +34,11 @@
 			function anadirCarrito(pTaco, campoTaco, descripcion, ultimaOrden){
 				var cantidad = document.getElementsByName(campoTaco)[0].value;
 				if (cantidad <= 0) {
-					alert("No ingresese cantidades negativas.");
+					alert("No ingrese cantidades negativas.");
+								/*
+									Aqui va un alertify
+									Favor de ingresar solo cantidades positivas.
+								*/
 				}else{
 
 					var total = pTaco * cantidad;
@@ -45,6 +49,10 @@
 						data: {total:total,descripcion:descripcion,cantidad:cantidad,ultimaOrden:ultimaOrden},
 						success:function(){
 							alert("Agregada a la orden");
+								/*
+									Aqui va un alertify
+									Platillo agregado, revisa tu carrito.
+								*/
 						}});		
 
 					$.ajax({

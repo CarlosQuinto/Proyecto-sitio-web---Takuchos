@@ -7,6 +7,12 @@
                
             } ?>
 
+			<?php if(!isset($_SESSION['userId'])){
+                
+              header("Location: login.php");
+
+            } ?>	
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -50,7 +56,7 @@
 
     			    <div>
 
-				 	  	 <label id="numtarjeta" for="numerotarjeta">Numero de Tarjeta:</label>
+				 	  	 <label id="numtarjeta" for="numerotarjeta">Número de Tarjeta:</label>
 
 				 	  	 <div>
 
@@ -61,7 +67,7 @@
 				 	</div>
 				 	 <div>
 
-				 	  	 <label id="nombre" for="nombre">Nombre:</label>
+				 	  	 <label id="nombre" for="nombre">Nombre Titular</label>
 
 				 	  	 <div>
 
@@ -70,24 +76,14 @@
 				 	  	 </div>
                          
 				 	</div>
-				 	 <div>
 
-				 	  	 <label id="apellido" for="apellido">Apellido:</label>
-
-				 	  	 <div>
-
-				 	  	 	<input id="campo" type="text" name="apellido" />
-
-				 	  	 </div>
-                         
-				 	</div>
 				 	<div>
 
 				 	  	 <label id="expiracion" for="fechaexpiracion">Fecha de expiracion:</label>
 
 				 	  	 <div>
 
-				 	  	 	<input id="campo" type="date" name="fecha" />
+				 	  	 	<input id="campo" type="text" name="fecha" placeholder="Mes/Año" />
 
 				 	  	 </div>
                          

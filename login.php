@@ -26,29 +26,73 @@
 		$_SESSION['userFullName'] = $row['nombre'] . " " . $row['apellido'];
 		$_SESSION['userCellPhone'] = $row['telefono'];
 
-      	echo $_SESSION['userId'];
-      	echo $_SESSION['userEmail'];
-      	echo $_SESSION['userFullName'];
-      	echo $_SESSION['userCellPhone'];
       	header("Location: profile-editar_perfil.php");
 		}else{
-			echo "Chito puto";
+
+			echo "Correo ó contraseña incorrectos.";
+
+			/*
+				Aqui va un alertify
+			*/
 		}
 	}
  ?>
 
 <?php 
 if (isset($_POST['sent'])) {
-	$nombre = $_POST['nombre'];
-	$apellidos = $_POST['apellidos'];
-	$telefono = $_POST['telefono'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
-	$cpassword = $_POST['cpassword'];
-if($password == $cpassword){
-	registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);
-	header("Location: index.php");
-}else{echo "The passwords doesn´t match.";}}
+	$nombre = trim($_POST['nombre']);
+	$apellidos = trim($_POST['apellidos']);
+	$telefono = trim($_POST['telefono']);
+	$email = trim($_POST['email']);
+	$password = trim($_POST['password']);
+	$cpassword = trim($_POST['cpassword']);
+
+	$bandera=0;
+
+	if (empty($nombre)) {$bandera++;}
+
+	if (empty($apellidos)) {$bandera++;}
+
+	if (empty($telefono)) {$bandera++;}
+
+	if (empty($email)) {$bandera++;}
+
+	if (empty($password)) {$bandera++;}
+
+	if (empty($cpassword)) {$bandera++;}	
+
+
+						if ($bandera > 0) {
+
+							echo "No dejes campos vacios.";
+							/*
+								Aqui va un alertify
+								No dejar campos vacios
+							*/
+						}else{
+
+							if($password == $cpassword){
+
+									echo "Registro exitoso!";
+									/*
+										Aqui va un alertify
+										No dejar campos vacios
+									*/
+
+								registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);
+								header("Location: index.php");
+								}else{
+
+								echo "Las contraseñas no coinciden.";
+							/*
+								Aqui va un alertify
+								Las contraseñas no coinciden.
+							*/
+
+								}
+						}
+
+}
 ?>
 
 <!DOCTYPE html>
