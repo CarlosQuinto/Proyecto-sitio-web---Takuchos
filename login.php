@@ -30,7 +30,7 @@
       	echo $_SESSION['userEmail'];
       	echo $_SESSION['userFullName'];
       	echo $_SESSION['userCellPhone'];
-      	header("Location: profile-editar_perfil.php?login=true");
+      	header("Location: profile-editar_perfil.php");
 		}else{
 			echo "Chito puto";
 		}
@@ -47,6 +47,7 @@ if (isset($_POST['sent'])) {
 	$cpassword = $_POST['cpassword'];
 if($password == $cpassword){
 	registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);
+	header("Location: index.php");
 }else{echo "The passwords doesn´t match.";}}
 ?>
 

@@ -1,13 +1,27 @@
 
+<?php include('conexiones/conexionLocalhost.php') ?>
+<?php include("funciones/funciones.php") ?>
+
+            <?php if(!isset($_SESSION)){
+                session_start();
+               
+            } ?>
+
 <?php 
 
-$_POST['campoNombre'];
-$_POST['campoApellido'];
-$_POST['campoDireccion'];
-$_POST['campoTelefono'];
-$_POST['campoReferencias'];
+if (isset($_POST['confirmar'])) {
+	
+	$n = $_POST['campoNombre'];
+	$a = $_POST['campoApellido'];
+	$t = $_POST['campoTelefono'];	
+	$d = $_POST['campoDireccion'];
+	$r = $_POST['campoReferencias'];
+	$m = $_POST['metodopago'];
+	$idUsuario = $_SESSION['userId'];
 
+	registrarDestinatario($n, $a, $t, $d, $r, $m, $idUsuario, $conexion);
 
+}
 
  ?>
 
@@ -29,8 +43,8 @@ $_POST['campoReferencias'];
 </head>
 <body>
 	<?php include('includes/header.php') ?>
-
-    <div id="contenido-c-o" >
+<center>
+<div id="contenido-c-o"  >
 		<div class="col-lg-3"></div>
       		<div id="formulario-c-d" class="col-lg-6">
       			<h3 class="col-lg-12"><strong>Confirmar orden</strong></h3>
@@ -68,11 +82,11 @@ $_POST['campoReferencias'];
 
       		        	<h4 >Tipo de pago</h4>
       		        	<div>
-      		            <label class="col-lg-12"><input type="radio" name="metodopago" value="efectivo" checked>Efectivo
+      		            <label class="col-lg-12"><input type="radio" name="metodopago" value="Efectivo" checked>Efectivo
       		            </label> 
                         <label class="col-lg-12">
-                        <input type="radio" name="metodopago" value="tarjeta">
-                        Tarjeta	
+                        <input type="radio" name="metodopago" value="Tarjeta de credito">
+                        Tarjeta
                         </label>
       		        	</div>
       		        
@@ -86,6 +100,8 @@ $_POST['campoReferencias'];
       		</div>
         <div class="col-lg-3"></div>
     </div>
+</center>
+    
       
 
 <div class="col-lg-2">	</div>

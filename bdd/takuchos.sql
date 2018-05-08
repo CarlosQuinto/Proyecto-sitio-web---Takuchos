@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2018 a las 03:16:49
+-- Tiempo de generación: 08-05-2018 a las 22:31:36
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -25,6 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datosdestinatario`
+--
+
+CREATE TABLE `datosdestinatario` (
+  `id` int(11) NOT NULL,
+  `Nombre` varchar(100) COLLATE utf32_bin NOT NULL,
+  `Apellido` varchar(100) COLLATE utf32_bin NOT NULL,
+  `Telefono` varchar(100) COLLATE utf32_bin NOT NULL,
+  `idOrden` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+
+--
+-- Volcado de datos para la tabla `datosdestinatario`
+--
+
+INSERT INTO `datosdestinatario` (`id`, `Nombre`, `Apellido`, `Telefono`, `idOrden`) VALUES
+(1, 'Carlos', 'Carballo', '016221739331', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tblordenes`
 --
 
@@ -34,9 +55,16 @@ CREATE TABLE `tblordenes` (
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `referencias` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `total` double(11,11) NOT NULL,
+  `total` double NOT NULL,
   `formaPago` enum('Efectivo','Tarjeta de credito') COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tblordenes`
+--
+
+INSERT INTO `tblordenes` (`id`, `idUsuario`, `fecha`, `direccion`, `referencias`, `total`, `formaPago`) VALUES
+(2, 10, '2018-05-08 20:27:38', 'Calle 5 Ave. 6 Col. San Vicente', 'Bochito Verde', 40, 'Efectivo');
 
 -- --------------------------------------------------------
 
@@ -58,10 +86,8 @@ CREATE TABLE `tblordenesplatillos` (
 --
 
 INSERT INTO `tblordenesplatillos` (`Id`, `IdPlatillo`, `IdOrden`, `total`, `cantidad`, `descripcion`) VALUES
-(1, 12, 75, 15, 1, 'Coca Cola 600 ml'),
-(2, 12, 75, 30, 2, 'Coca Cola 600 ml'),
-(3, 12, 75, 60, 4, 'Coca Cola 600 ml'),
-(4, 12, 75, 15, 1, 'Coca Cola 600 ml');
+(1, 1, 2, 30, 3, 'Suadero'),
+(2, 8, 2, 10, 1, 'Agua de jamaica');
 
 -- --------------------------------------------------------
 
@@ -129,14 +155,19 @@ CREATE TABLE `tblusuarios` (
 --
 
 INSERT INTO `tblusuarios` (`id`, `nombre`, `apellido`, `email`, `contrasena`, `telefono`) VALUES
-(4, 'Carlos', 'Carballo', 'carloscarballod2@gmail.com', '$2y$10$i5/Tt5B7DIENAppfeITymee2OVApfmkUqGccDGIwrilfo61aZBKWO', '6221739331'),
-(5, 'Erik', 'Gonzales', 'ErikPack@gmail.com', '$2y$10$XX.eCMmYHfpwd/G8VQFVDOgk4h0EVn8FeDwxlYTb.WevQ1g8K4dOW', '6221236487'),
-(6, 'Juan Carlos', 'Almanza', 'jalmanza@gmail.com', '$2y$10$6GQdZO9NCV2RzHs3wQ/RH.NdO/TtXWmOUqZuQlw8Zi3KaYchzmoKi', '6221749302'),
-(7, 'Jorge', 'De la Cruz', 'jorgewarro@gmail.com', '$2y$10$3n23sCSHjhVkwBPso0MfNOoO/CRjBahTfBnARwjkYwCc5.tAHjXZO', '6221859648');
+(10, 'Carlos', 'Carballo', 'carloscarballod2@gmail.com', '$2y$10$olIpcnkUQOun1GOeXy0pcOc1ciBsvoHDOlIDBo9Q/qo.5Y6GgaoGe', '6221739331'),
+(11, 'Carlos', 'Carballo', 'carloscarballod2@gmail.com', '$2y$10$eEVzr.w4hKGwRwtx4HDTzOUIWrHOWfly8NoUFr66lAKV.mWnlRTae', '6221739331');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `datosdestinatario`
+--
+ALTER TABLE `datosdestinatario`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idOrden` (`idOrden`);
 
 --
 -- Indices de la tabla `tblordenes`
@@ -175,16 +206,22 @@ ALTER TABLE `tblusuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `datosdestinatario`
+--
+ALTER TABLE `datosdestinatario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `tblordenes`
 --
 ALTER TABLE `tblordenes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tblordenesplatillos`
 --
 ALTER TABLE `tblordenesplatillos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tbltarjetascredito`
@@ -196,11 +233,17 @@ ALTER TABLE `tbltarjetascredito`
 -- AUTO_INCREMENT de la tabla `tblusuarios`
 --
 ALTER TABLE `tblusuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `datosdestinatario`
+--
+ALTER TABLE `datosdestinatario`
+  ADD CONSTRAINT `datosdestinatario_ibfk_1` FOREIGN KEY (`idOrden`) REFERENCES `tblordenes` (`id`);
 
 --
 -- Filtros para la tabla `tblordenes`

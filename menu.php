@@ -53,7 +53,7 @@
 						data: {total:total,descripcion:descripcion,cantidad:cantidad,ultimaOrden:ultimaOrden},
 						success:function(){
 							$('#nuevaFila').load('includes/tabla.php',{total:total,descripcion:descripcion,cantidad:cantidad,ultimaOrden:ultimaOrden});
-							$('#botonCompra').load('includes/botonCompra.php');
+							$('#botonCompra').load('includes/botonCompra.php',{ultimaOrden:ultimaOrden});
 						}});	
 
 				}}
