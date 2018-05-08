@@ -10,7 +10,7 @@
 	<ul class="row text-center quitar secciones">
 		<a href="index.php"><li class="col-md-6 col-lg-3 logo cambiarColorLogo">Los Takuchos</li></a>
 		<a href="menu.php"><li class="col-md-6 col-lg-3 cambiarColor">Menu</li></a>
-		<a href="contacto.html"><li class="col-md-6 col-lg-3 cambiarColor">Galeria</li></a>
+		<a href="galeria.php"><li class="col-md-6 col-lg-3 cambiarColor">Galeria</li></a>
 
 <?php 
 				if (isset($_SESSION)) {

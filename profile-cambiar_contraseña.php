@@ -33,7 +33,7 @@
 				<div  class="col-xs-4">
 					<h4>OPCIONES</h4>
 					
-				    <ul >
+				    <ul style="list-style: none;">
 						<li><a href="profile-editar_perfil.php">EDITAR PERFIL</a></li>
 					    <li><a href="profile-agregar_tarjeta.php">AGREGAR TARJETA</a></li>
 					    <li><a href="">TARJEAS</a></li>

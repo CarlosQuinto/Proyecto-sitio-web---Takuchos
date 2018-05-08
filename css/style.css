@@ -301,7 +301,7 @@ color: #04B486;
 }
 
 
-/*  mapa y galeria */
+/*  mapa y galeria de index*/
 
 * {
   
@@ -370,4 +370,34 @@ color: #04B486;
 
 .btn-next {
   right: 10px;
+}
+
+
+/* galeria */
+
+.contenedor-galeria{
+   max-width: 1212px;
+   margin: auto;
+   overflow: auto;
+   background-color: rgba(125,204,255,0.2);
+    
+    
+}
+
+.galeria{
+   
+   margin: 5px;
+   border: 1px solid #ccc;
+   float: left;
+   width: 390px;
+}
+.galeria img{
+
+    box-shadow: 0 0 0 5px #fff,
+    0 5px 5px;
+    width: 400px;
+    height: 300px;
+    margin-bottom: 5px;
+
+
 }
