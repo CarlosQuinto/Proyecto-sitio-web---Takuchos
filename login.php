@@ -29,11 +29,11 @@
       	header("Location: profile-editar_perfil.php");
 		}else{
 
-			echo "Correo ó contraseña incorrectos.";
-
-			/*
-				Aqui va un alertify
-			*/
+			 ?>
+			 <script type="text/javascript">
+			 	alert('Correo ó contraseña incorrectos.')
+			 </script>
+		<?php
 		}
 	}
  ?>
@@ -63,12 +63,12 @@ if (isset($_POST['sent'])) {
 
 
 						if ($bandera > 0) {
+ ?>
+						<script type="text/javascript">
+							alert('Favor de no dejar campos vacios.')
+						</script>
 
-							echo "No dejes campos vacios.";
-							/*
-								Aqui va un alertify
-								No dejar campos vacios
-							*/
+							<?php 
 						}else{
 
 							if($password == $cpassword){
@@ -83,11 +83,12 @@ if (isset($_POST['sent'])) {
 								header("Location: index.php");
 								}else{
 
-								echo "Las contraseñas no coinciden.";
-							/*
-								Aqui va un alertify
-								Las contraseñas no coinciden.
-							*/
+ ?>
+						<script type="text/javascript">
+							alert('Las contraseñas no coinciden.')
+						</script>
+
+							<?php 
 
 								}
 						}

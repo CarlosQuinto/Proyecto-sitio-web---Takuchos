@@ -42,13 +42,13 @@ if (isset($_POST['confirmar'])) {
 	if (empty($m)) {$bandera++;}
 
 	if ($bandera > 0) {
-		
-		echo "No dejes campos vacios.";
 
-		/*
-			Aqui va un alertify
-			Favor de no dejar campos vacios.
-		*/
+ ?>
+						<script type="text/javascript">
+							alert('Favor de no dejar campos vacios.')
+						</script>
+
+							<?php 
 
 	}else{
 		registrarDestinatario($n, $a, $t, $d, $r, $m, $idUsuario, $conexion);
