@@ -15,7 +15,31 @@
     mysqli_query($conexion,$sign_up) or die("No jala");
 
   } 
+
+
+  function crearOrden($idUsuario,$conexion){
+
+      $crear = sprintf("INSERT INTO tblordenes (idUsuario) VALUES ('%s')",
+      mysqli_real_escape_string(mysqli_connect(),trim($idUsuario)));
+
+          mysqli_query($conexion,$crear) or die("No jala");
+  }
+
+//Todo meco haciendo una mexicanada, como me odio.
+  function faramallaMeca($idUsuario,$conexion){
+
+    $consulta  = mysqli_query($conexion,"SELECT MAX(id) AS id FROM tblordenes") or die(mysql_error());
+    $id;
+    if($row = mysqli_fetch_row($consulta)){
+      $id = trim($row[0]);
+    }
+
+    return $id;
+  }
+
+
  ?>
+
 
 
 
