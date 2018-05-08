@@ -6,37 +6,44 @@
 
 
 <header>
-	<div class="wrapper">
-		<div class="logo">Los Takuchos</div>
+<nav> 
+	<ul class="row text-center quitar secciones">
+		<a href="index.php"><li class="col-md-6 col-lg-3 logo cambiarColorLogo">Los Takuchos</li></a>
+		<a href="menu.php"><li class="col-md-6 col-lg-3 cambiarColor">Menu</li></a>
+		<a href="contacto.html"><li class="col-md-6 col-lg-3 cambiarColor">Galeria</li></a>
 
-			<nav>
-				<a href="index.php">Inicio</a>
-				<a href="menu.php">Menú</a>
-				<a href="galeria.php">Galería</a>
-
-				<?php 
+<?php 
 				if (isset($_SESSION)) {
 					
 					if (!isset($_SESSION['userFullName'])) {
 						?>
-
-							<a href="formularios.php">Iniciar Sesion</a>
+							<a href="login.php"><li class="col-md-6 col-lg-3 cambiarColor">Iniciar Sesion</li></a>
 
 					<?php
 					}else{
 						?>
-							<a href="profile.php">
+							<a href="profile/profile-editar_perfil.php"><li class="col-md-6 col-lg-3 cambiarColor">
 								
-								<?php echo $_SESSION['userFullName']; ?>
+							<?php 
+							echo $_SESSION['userFullName'];
+							 ?>
 
-							</a>
-						<?php
+							</li></a>						
+							<?php
 					}
 				
 				}
 				 ?>
 
-				
-			</nav>
-	</div>
+			
+
+
+	</ul>	
+</nav>
+
 </header>
+
+
+
+
+				

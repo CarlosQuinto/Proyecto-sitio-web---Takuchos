@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-05-2018 a las 22:42:04
+-- Tiempo de generación: 08-05-2018 a las 03:16:49
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -47,8 +47,21 @@ CREATE TABLE `tblordenes` (
 CREATE TABLE `tblordenesplatillos` (
   `Id` int(11) NOT NULL,
   `IdPlatillo` int(11) NOT NULL,
-  `IdOrden` int(11) NOT NULL
+  `IdOrden` int(11) NOT NULL,
+  `total` double NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `descripcion` varchar(100) COLLATE utf32_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+
+--
+-- Volcado de datos para la tabla `tblordenesplatillos`
+--
+
+INSERT INTO `tblordenesplatillos` (`Id`, `IdPlatillo`, `IdOrden`, `total`, `cantidad`, `descripcion`) VALUES
+(1, 12, 75, 15, 1, 'Coca Cola 600 ml'),
+(2, 12, 75, 30, 2, 'Coca Cola 600 ml'),
+(3, 12, 75, 60, 4, 'Coca Cola 600 ml'),
+(4, 12, 75, 15, 1, 'Coca Cola 600 ml');
 
 -- --------------------------------------------------------
 
@@ -68,12 +81,18 @@ CREATE TABLE `tblplatillos` (
 --
 
 INSERT INTO `tblplatillos` (`id`, `nombre`, `precio`, `descripcion`) VALUES
-(1, 'Suadero', 10, 'Cada taco.'),
-(2, 'Adobada', 12.5, 'Cada taco.'),
-(3, 'Mixto', 12, 'Cada taco.'),
-(4, 'Longaniza', 12.5, 'Cada taco.'),
-(5, 'ChicharronSV', 15, 'Cada taco.'),
-(6, 'ChicharronSR', 15, 'Cada taco.');
+(1, 'Suadero', 10, 'Taco de suadero'),
+(2, 'Adobada', 12.5, 'Taco de adobada'),
+(3, 'Mixto', 12, 'Taco mixto'),
+(4, 'Longaniza', 12.5, 'Taco de longaniza'),
+(5, 'ChicharronSV', 15, 'Taco de chicharron en salsa verde'),
+(6, 'ChicharronSR', 15, 'Taco de chicharron en salsa roja'),
+(7, 'Agua de horchata', 10, 'Agua de horchata de 600 ml'),
+(8, 'Agua de jamaica', 10, 'Agua de jamaica 600 ml'),
+(9, 'Agua de melon', 10, 'Agua de melon 600ml'),
+(10, 'Te de limon', 10, 'Te de limon 600ml'),
+(11, 'Coca Cola 500 ml', 10, 'Coca Cola de vidrio 500 ml'),
+(12, 'Coca Cola 600 ml', 15, 'Coca Cola de vidrio 600 ml');
 
 -- --------------------------------------------------------
 
@@ -165,7 +184,7 @@ ALTER TABLE `tblordenes`
 -- AUTO_INCREMENT de la tabla `tblordenesplatillos`
 --
 ALTER TABLE `tblordenesplatillos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tbltarjetascredito`

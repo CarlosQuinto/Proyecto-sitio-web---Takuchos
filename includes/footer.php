@@ -1,11 +1,10 @@
-<footer>
-       
+   <footer>     
        <div class="container-footer-all">
         
             <div class="container-body">
 
                 <div class="colum1">
-                    <h1>¿Quienes Somos?</h1>
+                    <h2>¿Quienes Somos?</h2>
 
                     <p>Tienda de comestibles en Heroica Guaymas, Sonora, Mexico.</p>
 
@@ -13,21 +12,17 @@
 
                 <div class="colum2">
 
-                    <h1>Redes Sociales</h1>
-					
-                    
-                        <a href="https://www.facebook.com/Los-Takuchos-157951550933999/">
-                        	<div class="row">
+                    <h2>Redes Sociales</h2>
+
+                    <div class="row1">
                         <img src="icon/facebook.png">
                         <label>Siguenos en Facebook</label>
-                                            </div>
-                        </a>
-
-                    <div class="row">
+                    </div>
+                    <div class="row1">
                         <img src="icon/twitter.png">
                         <label>Siguenos en Twitter</label>
                     </div>
-                    <div class="row">
+                    <div class="row1">
                         <img src="icon/instagram.png">
                         <label>Siguenos en Instagram</label>
                     </div>
@@ -36,12 +31,11 @@
 
                 <div class="colum3">
 
-                    <h1>Contactos</h1>
+                    <h2>Informacion Contactos</h2>
 
                     <div class="row2">
                         <img src="icon/house.png">
-                        <label>Enseguida Oxxo Loma Dorada (2,67 km) 
-                        85440 Heroica Guaymas, Sonora, Mexico</label>
+                        <label>Enseguida Oxxo Loma Dorada, 85440 Heroica Guaymas, Sonora, Mexico</label>
                     </div>
 
                     <div class="row2">
@@ -55,10 +49,10 @@
         
         </div>
         
-        <div class="container-footer">
+        <div class="container-footer col-lg-12">
                <div class="footer">
                     <div class="copyright">
-                        © 2018 Todos los Derechos Reservados | <a href="">Los Takuchos</a>
+                        © 2017 Todos los Derechos Reservados | <a href="">Los Takuchos</a>
                     </div>
 
                     <div class="information">
