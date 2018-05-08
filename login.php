@@ -76,7 +76,7 @@ if (isset($_POST['sent'])) {
 									echo "Registro exitoso!";
 									/*
 										Aqui va un alertify
-										No dejar campos vacios
+										Favor de no dejar campos vacios.
 									*/
 
 								registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);

@@ -15,8 +15,9 @@
 
 <?php 
 
+
 if (isset($_POST['confirmar'])) {
-	
+
 	$n = $_POST['campoNombre'];
 	$a = $_POST['campoApellido'];
 	$t = $_POST['campoTelefono'];	
@@ -25,7 +26,38 @@ if (isset($_POST['confirmar'])) {
 	$m = $_POST['metodopago'];
 	$idUsuario = $_SESSION['userId'];
 
-	registrarDestinatario($n, $a, $t, $d, $r, $m, $idUsuario, $conexion);
+
+	$bandera=0;
+
+	if (empty($n)) {$bandera++;}
+
+	if (empty($a)) {$bandera++;}
+
+	if (empty($t)) {$bandera++;}
+
+	if (empty($d)) {$bandera++;}
+
+	if (empty($r)) {$bandera++;}
+
+	if (empty($m)) {$bandera++;}
+
+	if ($bandera > 0) {
+		
+		echo "No dejes campos vacios.";
+
+		/*
+			Aqui va un alertify
+			Favor de no dejar campos vacios.
+		*/
+
+	}else{
+		registrarDestinatario($n, $a, $t, $d, $r, $m, $idUsuario, $conexion);
+	}
+
+	
+
+
+	
 
 }
 

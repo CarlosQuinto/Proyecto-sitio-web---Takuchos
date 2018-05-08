@@ -1,4 +1,4 @@
-			<?php include('conexiones/conexionLocalhost.php') ?>
+﻿			<?php include('conexiones/conexionLocalhost.php') ?>
 			<?php include('funciones/funciones.php') ?>
 
 
@@ -10,7 +10,6 @@
 			<?php if(!isset($_SESSION['userId'])){
                 
               header("Location: login.php");
-
             } ?>	
 
 <?php 
@@ -22,11 +21,9 @@ if (isset($_POST['sent'])) {
 	$idUsuario = $_SESSION['userId'];
     
    
-
 	registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion);
 	header("Location: profile-agregar_tarjeta.php");
 	
-
 }
 ?>
 
@@ -143,6 +140,3 @@ if (isset($_POST['sent'])) {
  
 		</body>
 </html>
-
-
-
