@@ -13,6 +13,22 @@
 
             } ?>	
 
+<?php 
+if (isset($_POST['sent'])) {
+	$numerotarjeta = $_POST['numero'];
+	$nombreCompleto = $_POST['nombre'];
+	$fechaexpiracion= $_POST['fecha'];
+	$codigo = $_POST['codigo'];
+	$idUsuario = $_SESSION['userId'];
+    
+   
+
+	registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion);
+	header("Location: profile-agregar_tarjeta.php");
+	
+
+}
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -52,7 +68,7 @@
     			       <div id="titulo-tarjeta" class="col-xs-12">
           		       <h3>AGREGAR TARJETA</h2>
           	            </div>
-    			     <form>
+    			      <form id="form-agregar-tarjeta" action="profile-agregar_tarjeta.php" method="POST">
 
     			    <div>
 
@@ -101,7 +117,7 @@
 				 	</div>
 				 	
 				 		<div>
-                      	<button id="guardar" type="submit" name="guardar-tarjeta" >Guardar</button>
+                      		<input id="guardar" type="submit" value="Guardar" name="sent">
                         </div>
            
     			</form>

@@ -83,5 +83,25 @@ function calcularTotal($idOrden,$conexion){
       mysqli_query($conexion,$destinatarios) or die(mysql_error());
 
   }
+ 
+   function registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion){
+
+    
+
+    $agregar_tarjeta = sprintf("INSERT INTO tbltarjetascredito (idUsuario, Numero, nombreCompleto, fechaExpiracion, codigoSeguridad) VALUES ('%s', '%s', '%s', '%s' , '%s')",
+      mysqli_real_escape_string(mysqli_connect(),trim($idUsuario)),
+      mysqli_real_escape_string(mysqli_connect(),trim($numerotarjeta)),
+      mysqli_real_escape_string(mysqli_connect(),trim($nombreCompleto)),
+      mysqli_real_escape_string(mysqli_connect(),trim($fechaexpiracion)),
+      mysqli_real_escape_string(mysqli_connect(),trim($codigo))
+      
+    );
+
+    mysqli_query($conexion,$agregar_tarjeta) or die("Ha ocurrido un error al registrar la tarjeta.");
+
+  } 
+
+
+
 
  ?>
