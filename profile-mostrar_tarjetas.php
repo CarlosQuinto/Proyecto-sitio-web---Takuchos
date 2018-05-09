@@ -34,9 +34,9 @@
 	
 <?php include("includes/header.php") ?>
     
-
-   <!-- Menu opciones -->
-   <div id="menu-opciones" class="col-xs-4">
+    <div  class="col-lg-12">
+    	<!-- Menu opciones -->
+    <div id="menu-opciones" class="col-lg-4">
                 <h4>OPCIONES</h4> 
             <ul style="list-style: none;">
               <li><a href="profile-agregar_tarjeta.php">AGREGAR TARJETA</a></li>
@@ -49,9 +49,10 @@
             <input id="cerrarsesion" type="submit" value="CERRAR SESION" name="sentclose">
           </form>
      </div>
+     <div id="contenidotablatarjetas"class="col-lg-8" >
+     	<div class="col-lg-2"></div>
 
-
-	<div class="col-lg-2"></div>
+	
 		<div class="col-lg-8">
 
 
@@ -91,11 +92,9 @@
 			</table>
 		</div>
 	<div class="col-lg-2"></div>
+     </div>
 
-
-
-
-
+    </div>
 
 
 	<div class="col-lg-12">
