@@ -33,8 +33,22 @@
 <body>
 	
 <?php include("includes/header.php") ?>
+    
 
+   <!-- Menu opciones -->
+   <div id="menu-opciones" class="col-xs-4">
+                <h4>OPCIONES</h4> 
+            <ul style="list-style: none;">
+              <li><a href="profile-agregar_tarjeta.php">AGREGAR TARJETA</a></li>
+              <li><a href="profile-cambiar_contraseña.php">CAMBIAR CONTRASEÑA</a></li>
+                  <li><a href="profile-mostrar_tarjetas.php">TARJETAS</a></li>
+                  <li><a href="profile-mostrar-pedidos.php">HISTORIAL DE PEDIDOS</a></li>
 
+          </ul>
+          <form id="form-cerrar-sesion" action="profile-editar_perfil.php" method="POST">
+            <input id="cerrarsesion" type="submit" value="CERRAR SESION" name="sentclose">
+          </form>
+     </div>
 
 
 	<div class="col-lg-2"></div>
