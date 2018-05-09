@@ -12,6 +12,21 @@
               header("Location: login.php");
 
             } ?>  
+
+            <!-- editar informacion -->
+            <?php 
+               if (isset($_POST['sent'])) {
+                  $nombre = $_POST['nombre'];
+                  $apellido = $_POST['apellido'];
+                 $telefono= $_POST['telefono'];
+  
+                  $idUsuario = $_SESSION['userId'];
+    
+                  editarInformacion($idUsuario,$nombre,$apellido,$telefono,$conexion);
+                  header("Location: profile-editar_perfil.php?updatedUser=true");
+  
+               }
+            ?>
  <!-- cerrar la sesion -->
             <?php 
             if (isset($_POST['sentclose'])) {
@@ -52,13 +67,13 @@
               <li><a href="">TARJEAS</a></li>
               <li><a href="">HISTORIAL DE PEDIDOS</a></li>
           </ul>
-          <form id="form-cerrar-sesion" action="profile-cambiar_contraseña.php" method="POST">
+          <form id="form-cerrar-sesion" action="profile-editar_perfil.php" method="POST">
             <input id="cerrarsesion" type="submit" value="CERRAR SESION" name="sentclose">
           </form>
                </div>
    	<center>
    		
-   		<form id="formulario-p" class="col-xs-5">
+   		<form id="formulario-p" class="col-xs-5"  action="profile-editar_perfil.php" method="POST">
    			  <div class="col-xs-12">
         <h3>EDITAR PERFIL</h3>
       </div>
@@ -87,7 +102,7 @@
               
    			
    			<div class="col-xs-12">
-   				<button id="actualizarp"type="submit" name="actualizarperfil" >Actualizar perfil</button>
+   				<input id="actualizarp" type="submit" value="Actualizar perfil" name="sent">
    			</div>
 
    		</form>

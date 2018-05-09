@@ -68,7 +68,7 @@ if (isset($_POST['sent'])) {
 					    <li><a href="">HISTORIAL DE PEDIDOS</a></li>
 					 
 					</ul>
-					<form id="form-cerrar-sesion" action="profile-cambiar_contraseña.php" method="POST">
+					<form id="form-cerrar-sesion" action="profile-agregar_tarjeta.php" method="POST">
 						<input id="cerrarsesion" type="submit" value="CERRAR SESION" name="sentclose">
 					</form>
                </div>

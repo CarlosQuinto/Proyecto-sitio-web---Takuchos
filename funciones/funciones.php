@@ -77,4 +77,18 @@ function calcularTotal($idOrden,$conexion){
      mysqli_query($conexion, $queryCambiarContra ) or die("Lo sentimos ocurrio un error al intentar ejecutar el query");
 
   } 
+
+   function editarInformacion($idUsuario,$nombre,$apellido,$telefono,$conexion){
+
+  
+    $queryEditarInformacion = sprintf("UPDATE tblusuarios SET  nombre = '%s', apellido = '%s', telefono = '%s' WHERE id = $idUsuario",
+      mysqli_real_escape_string(mysqli_connect(),trim($nombre)),
+      mysqli_real_escape_string(mysqli_connect(),trim($apellido)),
+      mysqli_real_escape_string(mysqli_connect(),trim($telefono))
+    );
+     
+     mysqli_query($conexion, $queryEditarInformacion ) or die("Lo sentimos ocurrio un error al intentar ejecutar el query");
+
+  } 
+  
  ?>
