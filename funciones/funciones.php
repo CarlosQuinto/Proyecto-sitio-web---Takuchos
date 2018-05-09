@@ -75,7 +75,7 @@ function calcularTotal($idOrden,$conexion){
     );
      
      mysqli_query($conexion, $queryCambiarContra ) or die("Lo sentimos ocurrio un error al intentar ejecutar el query");
-
+      header("Location: profile-editar_perfil.php");
   } 
 
    function editarInformacion($idUsuario,$nombre,$apellido,$telefono,$conexion){
