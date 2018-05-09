@@ -27,6 +27,15 @@ if (isset($_POST['sent'])) {
 }
 ?>
 
+ <!-- cerrar la sesion -->
+            <?php 
+            if (isset($_POST['sentclose'])) {
+	            
+             session_destroy();
+             }
+
+            ?>
+
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -57,8 +66,11 @@ if (isset($_POST['sent'])) {
 					    <li><a href="profile-cambiar_contraseña.php">CAMBIAR CONTRASEÑA</a></li>
 					    <li><a href="">TARJEAS</a></li>
 					    <li><a href="">HISTORIAL DE PEDIDOS</a></li>
-					
+					 
 					</ul>
+					<form id="form-cerrar-sesion" action="profile-cambiar_contraseña.php" method="POST">
+						<input id="cerrarsesion" type="submit" value="CERRAR SESION" name="sentclose">
+					</form>
                </div>
                <center>
            	   <div id="formulario-p" class="col-xs-5" >

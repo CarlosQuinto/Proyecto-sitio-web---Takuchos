@@ -14,11 +14,41 @@
             } ?>	
 
 
+             <!-- cambiar la contraseña-->
+            <?php 
+
+            if (isset($_POST['sent'])) {
+	            $contra = $_POST['contra'];
+	            $idUsuario = $_SESSION['userId'];
+    
+               if($_POST['contra'] != $_POST['contra2']) {
+                  echo "las contraseñas no coinciden";
+              }else{
+              	 cambiarContrasena($idUsuario,$contra,$conexion);
+	              header("Location: profile-editar_perfil.php");
+
+              }
+
+             }
+
+
+            ?>
+             
+            <!-- cerrar la sesion -->
+            <?php 
+            if (isset($_POST['sentclose'])) {
+	            
+             session_destroy();
+             }
+
+            ?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>
-			Perfil/password - 
+			Perfil/Cambiar_contraseña - 
 			<?php 
 			echo $_SESSION['userFullName'];
 			 ?>
@@ -46,48 +76,42 @@
 					    <li><a href="">HISTORIAL DE PEDIDOS</a></li>
 					
 					</ul>
-					
+					<form id="form-cerrar-sesion" action="profile-cambiar_contraseña.php" method="POST">
+						<input id="cerrarsesion" type="submit" value="CERRAR SESION" name="sentclose">
+					</form>
 			  </div>
+
 				<div class="col-xs-5">
 					<center><h3>CAMBIAR CONTRASEÑA</h3>
 					<div id="formulario-c-c">
-						<form >
-					      <div >
+						<form id="form-cambiar-contraseña" action="profile-cambiar_contraseña.php" method="POST">
+					      
+				 	<div>
 
-				 	  	 <label id="actual" for="apellido">Contraseña actual:</label>
+				 	  	 <label id="nueva-contrasena" for="contra">Nueva contraseña:</label>
 
 				 	  	 <div>
 
-				 	  	 	<input id="campo" type="password" name="actual" />
+				 	  	 	<input id="campo" type="password" name="contra" />
 
 				 	  	 </div>
                          
 				 	</div>
 				 	<div>
 
-				 	  	 <label id="nueva-contrasena" for="fechaexpiracion">Nueva contraseña:</label>
+				 	  	 <label id="confirmar" for="contra2">Confirmar contraseña:</label>
 
 				 	  	 <div>
 
-				 	  	 	<input id="campo" type="password" name="nueva" />
-
-				 	  	 </div>
-                         
-				 	</div>
-				 	<div>
-
-				 	  	 <label id="confirmar" for="apellido">Confirmar contraseña:</label>
-
-				 	  	 <div>
-
-				 	  	 	<input id="campo" type="password" name="confirmar" />
+				 	  	 	<input id="campo" type="password" name="contra2" />
 
 				 	  	 </div>
                          
 				 	</div>
 				 	
 				 		<div>
-                      	<button id="actualizarc" type="submit" name="actualizarcontraseña" >Actualizar Contraseña</button>
+                      	
+                        <input id="actualizarc" type="submit" value="Actualizar Contraseña" name="sent">
                         </div>
    	
 					   </form>

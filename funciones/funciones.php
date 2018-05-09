@@ -65,4 +65,16 @@ function calcularTotal($idOrden,$conexion){
     );
     mysqli_query($conexion,$agregar_tarjeta) or die("Ha ocurrido un error al registrar la tarjeta.");
   } 
+
+  function cambiarContrasena($idUsuario,$contra,$conexion){
+
+     $encryptpass = password_hash($contra, PASSWORD_DEFAULT);
+     
+    $queryCambiarContra = sprintf("UPDATE tblusuarios SET  contrasena = '%s' WHERE id = $idUsuario",
+      mysqli_real_escape_string(mysqli_connect(),trim($encryptpass))
+    );
+     
+     mysqli_query($conexion, $queryCambiarContra ) or die("Lo sentimos ocurrio un error al intentar ejecutar el query");
+
+  } 
  ?>
