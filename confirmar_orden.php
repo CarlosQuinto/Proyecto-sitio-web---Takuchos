@@ -13,59 +13,6 @@
 
             } ?>	
 
-<?php 
-
-
-if (isset($_POST['confirmar'])) {
-
-	$n = $_POST['campoNombre'];
-	$a = $_POST['campoApellido'];
-	$t = $_POST['campoTelefono'];	
-	$d = $_POST['campoDireccion'];
-	$r = $_POST['campoReferencias'];
-	$m = $_POST['metodopago'];
-	$idUsuario = $_SESSION['userId'];
-
-
-	$bandera=0;
-
-	if (empty($n)) {$bandera++;}
-
-	if (empty($a)) {$bandera++;}
-
-	if (empty($t)) {$bandera++;}
-
-	if (empty($d)) {$bandera++;}
-
-	if (empty($r)) {$bandera++;}
-
-	if (empty($m)) {$bandera++;}
-
-	if ($bandera > 0) {
-
- ?>
-						<script type="text/javascript">
-							alert('Favor de no dejar campos vacios.')
-						</script>
-
-							<?php 
-
-	}else{
-		registrarDestinatario($n, $a, $t, $d, $r, $m, $idUsuario, $conexion);
-	}
-
-	
-
-
-	
-
-}
-
- ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -75,9 +22,10 @@ if (isset($_POST['confirmar'])) {
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/stilosperfil.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+		<link rel="stylesheet" type="text/css" href="alertifyjs/css/themes/default.css">
+		<script src="alertifyjs/alertify.js"></script>
 		
-
-
 </head>
 <body>
 	<?php include('includes/header.php') ?>
@@ -156,3 +104,57 @@ if (isset($_POST['confirmar'])) {
 
 
 
+<?php 
+
+
+if (isset($_POST['confirmar'])) {
+
+	$n = $_POST['campoNombre'];
+	$a = $_POST['campoApellido'];
+	$t = $_POST['campoTelefono'];	
+	$d = $_POST['campoDireccion'];
+	$r = $_POST['campoReferencias'];
+	$m = $_POST['metodopago'];
+	$idUsuario = $_SESSION['userId'];
+
+
+	$bandera=0;
+
+	if (empty($n)) {$bandera++;}
+
+	if (empty($a)) {$bandera++;}
+
+	if (empty($t)) {$bandera++;}
+
+	if (empty($d)) {$bandera++;}
+
+	if (empty($r)) {$bandera++;}
+
+	if (empty($m)) {$bandera++;}
+
+	if ($bandera > 0) {
+
+ ?>
+						<script type="text/javascript">
+							alertify.error('Favor de no dejar campos vacios.');
+						</script>
+
+							<?php 
+
+	}else{
+
+		/*
+			Aqui va numero de compra.
+		*/
+
+		registrarDestinatario($n, $a, $t, $d, $r, $m, $idUsuario, $conexion);
+	}
+
+	
+
+
+	
+
+}
+
+ ?>

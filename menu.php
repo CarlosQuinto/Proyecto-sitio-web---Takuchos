@@ -17,6 +17,9 @@
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+		<link rel="stylesheet" type="text/css" href="alertifyjs/css/themes/default.css">
+		<script src="alertifyjs/alertify.js"></script>
 		<?php include('conexiones/conexionLocalhost.php') ?>
 		<?php include("funciones/funciones.php") ?>
 
@@ -34,11 +37,8 @@
 			function anadirCarrito(pTaco, campoTaco, descripcion, ultimaOrden){
 				var cantidad = document.getElementsByName(campoTaco)[0].value;
 				if (cantidad <= 0) {
-					alert("No ingrese cantidades negativas.");
-								/*
-									Aqui va un alertify
-									Favor de ingresar solo cantidades positivas.
-								*/
+							alertify.error("Favor de ingresar solo cantidades positivas.");
+															
 				}else{
 
 					var total = pTaco * cantidad;
@@ -48,11 +48,8 @@
 						type: "POST",
 						data: {total:total,descripcion:descripcion,cantidad:cantidad,ultimaOrden:ultimaOrden},
 						success:function(){
-							alert("Agregada a la orden");
-								/*
-									Aqui va un alertify
-									Platillo agregado, revisa tu carrito.
-								*/
+							alertify.success("Platillo agregado, revisa tu carrito.");
+
 						}});		
 
 					$.ajax({

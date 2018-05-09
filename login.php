@@ -1,4 +1,5 @@
 
+
 			<?php include('conexiones/conexionLocalhost.php') ?>
 			<?php include('funciones/funciones.php') ?>
 
@@ -15,86 +16,6 @@
 
 
 
-<?php 
-	if (isset($_POST['ingresar'])) {
-		$consulta  = mysqli_query($conexion,"SELECT * FROM tblusuarios WHERE email = '".$_POST['iemail']."'");
-		$row = mysqli_fetch_array($consulta);
-		if (password_verify($_POST['ipassword'],$row['contrasena'])) {
-
-		$_SESSION['userId'] = $row['id'];
-		$_SESSION['userEmail'] = $row['email'];
-		$_SESSION['userFullName'] = $row['nombre'] . " " . $row['apellido'];
-		$_SESSION['userCellPhone'] = $row['telefono'];
-
-      	header("Location: profile-editar_perfil.php");
-		}else{
-
-			 ?>
-			 <script type="text/javascript">
-			 	alert('Correo ó contraseña incorrectos.')
-			 </script>
-		<?php
-		}
-	}
- ?>
-
-<?php 
-if (isset($_POST['sent'])) {
-	$nombre = trim($_POST['nombre']);
-	$apellidos = trim($_POST['apellidos']);
-	$telefono = trim($_POST['telefono']);
-	$email = trim($_POST['email']);
-	$password = trim($_POST['password']);
-	$cpassword = trim($_POST['cpassword']);
-
-	$bandera=0;
-
-	if (empty($nombre)) {$bandera++;}
-
-	if (empty($apellidos)) {$bandera++;}
-
-	if (empty($telefono)) {$bandera++;}
-
-	if (empty($email)) {$bandera++;}
-
-	if (empty($password)) {$bandera++;}
-
-	if (empty($cpassword)) {$bandera++;}	
-
-
-						if ($bandera > 0) {
- ?>
-						<script type="text/javascript">
-							alert('Favor de no dejar campos vacios.')
-						</script>
-
-							<?php 
-						}else{
-
-							if($password == $cpassword){
-
-									echo "Registro exitoso!";
-									/*
-										Aqui va un alertify
-										Favor de no dejar campos vacios.
-									*/
-
-								registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);
-								header("Location: index.php");
-								}else{
-
- ?>
-						<script type="text/javascript">
-							alert('Las contraseñas no coinciden.')
-						</script>
-
-							<?php 
-
-								}
-						}
-
-}
-?>
 
 <!DOCTYPE html>
 <html>
@@ -103,6 +24,10 @@ if (isset($_POST['sent'])) {
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style-login.css"/>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+		<link rel="stylesheet" type="text/css" href="alertifyjs/css/themes/default.css">
+		<script src="alertifyjs/alertify.js"></script>
+
 </head>
 <body>
 
@@ -214,3 +139,85 @@ if (isset($_POST['sent'])) {
 
 </body>
 </html>
+
+
+<?php 
+	if (isset($_POST['ingresar'])) {
+		$consulta  = mysqli_query($conexion,"SELECT * FROM tblusuarios WHERE email = '".$_POST['iemail']."'");
+		$row = mysqli_fetch_array($consulta);
+		if (password_verify($_POST['ipassword'],$row['contrasena'])) {
+
+		$_SESSION['userId'] = $row['id'];
+		$_SESSION['userEmail'] = $row['email'];
+		$_SESSION['userFullName'] = $row['nombre'] . " " . $row['apellido'];
+		$_SESSION['userCellPhone'] = $row['telefono'];
+
+      	header("Location: profile-editar_perfil.php");
+		}else{
+
+			 ?>
+			 <script type="text/javascript">
+			 	alertify.error("Correo ó contraseña incorrectos.");
+			 </script>
+		<?php
+		}
+	}
+ ?>
+
+<?php 
+if (isset($_POST['sent'])) {
+	$nombre = trim($_POST['nombre']);
+	$apellidos = trim($_POST['apellidos']);
+	$telefono = trim($_POST['telefono']);
+	$email = trim($_POST['email']);
+	$password = trim($_POST['password']);
+	$cpassword = trim($_POST['cpassword']);
+
+	$bandera=0;
+
+	if (empty($nombre)) {$bandera++;}
+
+	if (empty($apellidos)) {$bandera++;}
+
+	if (empty($telefono)) {$bandera++;}
+
+	if (empty($email)) {$bandera++;}
+
+	if (empty($password)) {$bandera++;}
+
+	if (empty($cpassword)) {$bandera++;}	
+
+
+						if ($bandera > 0) {
+ ?>
+						<script type="text/javascript">
+							alertify.error("Favor de no dejar campos vacios.");
+						</script>
+
+<?php 
+						}else{
+
+							if($password == $cpassword){
+ ?>
+
+							<script type="text/javascript">
+								alertify.success("Registro exitoso!");
+							</script>		
+	
+<?php  
+								registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);
+								header("Location: index.php");
+								}else{
+
+ ?>
+						<script type="text/javascript">
+							alertify.error("Las contraseñas no coinciden.");
+						</script>
+
+<?php 
+
+								}
+						}
+
+}
+?>
