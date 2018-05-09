@@ -71,8 +71,7 @@
 				    <ul style="list-style: none;">
 						<li><a href="profile-editar_perfil.php">EDITAR PERFIL</a></li>
 					    <li><a href="profile-agregar_tarjeta.php">AGREGAR TARJETA</a></li>
-					    <li><a href="">TARJEAS</a></li>
-					    <li><a href="">HISTORIAL DE PEDIDOS</a></li>
+					   
 					
 					</ul>
 					<form id="form-cerrar-sesion" action="profile-cambiar_contraseña.php" method="POST">

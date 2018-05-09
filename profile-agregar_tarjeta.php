@@ -73,8 +73,7 @@ if (isset($_POST['sent'])) {
 				    <ul style="list-style: none;">
 						<li><a href="profile-editar_perfil.php">EDITAR PERFIL</a></li>
 					    <li><a href="profile-cambiar_contraseña.php">CAMBIAR CONTRASEÑA</a></li>
-					    <li><a href="">TARJEAS</a></li>
-					    <li><a href="">HISTORIAL DE PEDIDOS</a></li>
+					 
 					 
 					</ul>
 					<form id="form-cerrar-sesion" action="profile-agregar_tarjeta.php" method="POST">
