@@ -30,10 +30,105 @@
 
 </head>
 <body>
+			<?php include('funciones/expresionesRegulares.php') ?>
+<?php 
+	if (isset($_POST['ingresar'])) {
+		$consulta  = mysqli_query($conexion,"SELECT * FROM tblusuarios WHERE email = '".$_POST['iemail']."'");
+		$row = mysqli_fetch_array($consulta);
+		if (password_verify($_POST['ipassword'],$row['contrasena'])) {
+
+		$_SESSION['userId'] = $row['id'];
+		$_SESSION['userEmail'] = $row['email'];
+		$_SESSION['userFullName'] = $row['nombre'] . " " . $row['apellido'];
+		$_SESSION['userCellPhone'] = $row['telefono'];
+
+      	header("Location: profile-editar_perfil.php");
+		}else{
+
+			 ?>
+			 <script type="text/javascript">
+			 	alertify.error("Correo ó contraseña incorrectos.");
+			 </script>
+		<?php
+		}
+	}
+ ?>
+
+
+<?php 
+if (isset($_POST['sent'])) {
+	$nombre = trim($_POST['nombre']);
+	$apellidos = trim($_POST['apellidos']);
+	$telefono = trim($_POST['telefono']);
+	$email = trim($_POST['email']);
+	$password = trim($_POST['password']);
+	$cpassword = trim($_POST['cpassword']);
+
+
+	$existe = confirmarExistenciaEmail($conexion,$email);
+	$validez = is_valid_email($email);
+
+	$bandera=0;
+
+	if (empty($nombre)) {$bandera++;}
+
+	if (empty($apellidos)) {$bandera++;}
+
+	if (empty($telefono)) {$bandera++;}
+
+	if (empty($email)) {$bandera++;}
+
+	if (empty($password)) {$bandera++;}
+
+	if (empty($cpassword)) {$bandera++;}	
+
+
+						if ($bandera > 0) { ?>
+						<script type="text/javascript">
+							alertify.error("Favor de no dejar campos vacios.");
+						</script>
+<?php 
+						}else{
+							if ($validez) {
+								if($password == $cpassword){
+									if (!$existe) {
+										?>
+
+										<script type="text/javascript">
+											alertify.success("Registro exitoso!");
+      										
+										</script>	
+<?php
+											registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);
+											header("Location: index.php");
+									}else{
+?>
+
+										<script type="text/javascript">
+										alertify.error('Esa direccion ya esta siendo usada. Prueba con otra distinta.');
+										</script>
+
+<?php  
+									}
+										}else{ ?>
+
+												<script type="text/javascript">
+													alertify.error("Las contraseñas no coinciden.");
+												</script>
+										<?php }
+
+							}else{ ?>
+
+									<script type="text/javascript">
+										alertify.error("Favor de ingresar una dirección de correo valida.");
+									</script>
+	<?php 
+								 }
+								}
+							}
+							 ?>
 
 			<?php include('includes/header.php') ?>
-
-
 
 
 		<div id="contenido" class="col-lg-12">
@@ -135,89 +230,9 @@
 		<?php include('includes/footer.php') ?>
 </div>
 
-
-
 </body>
 </html>
 
 
-<?php 
-	if (isset($_POST['ingresar'])) {
-		$consulta  = mysqli_query($conexion,"SELECT * FROM tblusuarios WHERE email = '".$_POST['iemail']."'");
-		$row = mysqli_fetch_array($consulta);
-		if (password_verify($_POST['ipassword'],$row['contrasena'])) {
 
-		$_SESSION['userId'] = $row['id'];
-		$_SESSION['userEmail'] = $row['email'];
-		$_SESSION['userFullName'] = $row['nombre'] . " " . $row['apellido'];
-		$_SESSION['userCellPhone'] = $row['telefono'];
-
-      	header("Location: profile-editar_perfil.php");
-		}else{
-
-			 ?>
-			 <script type="text/javascript">
-			 	alertify.error("Correo ó contraseña incorrectos.");
-			 </script>
-		<?php
-		}
-	}
- ?>
-
-<?php 
-if (isset($_POST['sent'])) {
-	$nombre = trim($_POST['nombre']);
-	$apellidos = trim($_POST['apellidos']);
-	$telefono = trim($_POST['telefono']);
-	$email = trim($_POST['email']);
-	$password = trim($_POST['password']);
-	$cpassword = trim($_POST['cpassword']);
-
-	$bandera=0;
-
-	if (empty($nombre)) {$bandera++;}
-
-	if (empty($apellidos)) {$bandera++;}
-
-	if (empty($telefono)) {$bandera++;}
-
-	if (empty($email)) {$bandera++;}
-
-	if (empty($password)) {$bandera++;}
-
-	if (empty($cpassword)) {$bandera++;}	
-
-
-						if ($bandera > 0) {
- ?>
-						<script type="text/javascript">
-							alertify.error("Favor de no dejar campos vacios.");
-						</script>
-
-<?php 
-						}else{
-
-							if($password == $cpassword){
- ?>
-
-							<script type="text/javascript">
-								alertify.success("Registro exitoso!");
-							</script>		
-	
-<?php  
-								registrar($nombre,$apellidos,$email,$password,$telefono,$conexion);
-								header("Location: index.php");
-								}else{
-
- ?>
-						<script type="text/javascript">
-							alertify.error("Las contraseñas no coinciden.");
-						</script>
-
-<?php 
-
-								}
-						}
-
-}
-?>
+					
