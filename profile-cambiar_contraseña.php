@@ -11,28 +11,7 @@
                 
               header("Location: login.php");
 
-            } ?>	
-
-
-             <!-- cambiar la contraseña-->
-            <?php 
-
-            if (isset($_POST['sent'])) {
-	            $contra = $_POST['contra'];
-	            $idUsuario = $_SESSION['userId'];
-    
-               if($_POST['contra'] != $_POST['contra2']) {
-                  echo "las contraseñas no coinciden";
-              }else{
-              	 cambiarContrasena($idUsuario,$contra,$conexion);
-	              header("Location: profile-editar_perfil.php");
-
-              }
-
-             }
-
-
-            ?>
+            } ?>
              
             <!-- cerrar la sesion -->
             <?php 
@@ -57,13 +36,33 @@
 		     <link rel="stylesheet" href="css/stilosperfil.css"/>
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 			<link rel="stylesheet" href="css/style.css"/>
+			<link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+		    <link rel="stylesheet" type="text/css" href="alertifyjs/css/themes/default.css">
+		    <script src="alertifyjs/alertify.js"></script>
 			
 			
 
 	</head>
 		<body>
 
+            <?php 
+            if (isset($_POST['sent'])) {
+	            $contra = $_POST['contra'];
+	            $idUsuario = $_SESSION['userId'];
+               if($_POST['contra'] != $_POST['contra2']) {
+                   ?>
+			     <script type="text/javascript">
+			 	alertify.error("Las contraseñas no coinciden");
+			      </script>
+		            <?php
+              }else{
+              	 cambiarContrasena($idUsuario,$contra,$conexion);
+              }
+             }
+            ?>
 			<?php include('includes/header.php') ?>
+
+            
 
 			<div  id="contenido-e-p" class="col-xs-12">
 				<div  class="col-xs-4">
