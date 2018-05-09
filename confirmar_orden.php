@@ -28,6 +28,62 @@
 		
 </head>
 <body>
+
+<?php 
+
+
+if (isset($_POST['confirmar'])) {
+
+	$n = $_POST['campoNombre'];
+	$a = $_POST['campoApellido'];
+	$t = $_POST['campoTelefono'];	
+	$d = $_POST['campoDireccion'];
+	$r = $_POST['campoReferencias'];
+	$m = $_POST['metodopago'];
+	$idUsuario = $_SESSION['userId'];
+
+
+	$bandera=0;
+
+	if (empty($n)) {$bandera++;}
+
+	if (empty($a)) {$bandera++;}
+
+	if (empty($t)) {$bandera++;}
+
+	if (empty($d)) {$bandera++;}
+
+	if (empty($r)) {$bandera++;}
+
+	if (empty($m)) {$bandera++;}
+
+	if ($bandera > 0) {
+
+ ?>
+						<script type="text/javascript">
+							alertify.error('Favor de no dejar campos vacios.');
+						</script>
+
+							<?php 
+
+	}else{
+
+		/*
+
+			Aqui va numero de compra.
+		*/
+
+		registrarDestinatario($n, $a, $t, $d, $r, $m, $idUsuario, $conexion);
+		header('Location: mostrarOrden.php');
+	}
+
+}
+
+ ?>
+
+
+
+
 	<?php include('includes/header.php') ?>
 <center>
 <div id="contenido-c-o"  >
@@ -78,7 +134,7 @@
       		        
       	            </div>
       		        <div class="col-lg-12">
-                      <button id="actualizarc" type="submit" name="confirmar" >Confirmar</button>
+                      <button id="actualizarc" type="submit" name="confirmar">Confirmar</button>
                     </div>
       		        </div>
 
@@ -102,59 +158,3 @@
 </body>
 </html>
 
-
-
-<?php 
-
-
-if (isset($_POST['confirmar'])) {
-
-	$n = $_POST['campoNombre'];
-	$a = $_POST['campoApellido'];
-	$t = $_POST['campoTelefono'];	
-	$d = $_POST['campoDireccion'];
-	$r = $_POST['campoReferencias'];
-	$m = $_POST['metodopago'];
-	$idUsuario = $_SESSION['userId'];
-
-
-	$bandera=0;
-
-	if (empty($n)) {$bandera++;}
-
-	if (empty($a)) {$bandera++;}
-
-	if (empty($t)) {$bandera++;}
-
-	if (empty($d)) {$bandera++;}
-
-	if (empty($r)) {$bandera++;}
-
-	if (empty($m)) {$bandera++;}
-
-	if ($bandera > 0) {
-
- ?>
-						<script type="text/javascript">
-							alertify.error('Favor de no dejar campos vacios.');
-						</script>
-
-							<?php 
-
-	}else{
-
-		/*
-			Aqui va numero de compra.
-		*/
-
-		registrarDestinatario($n, $a, $t, $d, $r, $m, $idUsuario, $conexion);
-	}
-
-	
-
-
-	
-
-}
-
- ?>

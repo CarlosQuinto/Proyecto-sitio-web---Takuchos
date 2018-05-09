@@ -23,8 +23,7 @@
                   $idUsuario = $_SESSION['userId'];
     
                   editarInformacion($idUsuario,$nombre,$apellido,$telefono,$conexion);
-                  header("Location: profile-editar_perfil.php?updatedUser=true");
-  
+                  session_destroy();
                }
             ?>
  <!-- cerrar la sesion -->
@@ -64,7 +63,9 @@
             <ul style="list-style: none;">
               <li><a href="profile-agregar_tarjeta.php">AGREGAR TARJETA</a></li>
               <li><a href="profile-cambiar_contraseña.php">CAMBIAR CONTRASEÑA</a></li>
-              
+                  <li><a href="profile-mostrar_tarjetas.php">TARJETAS</a></li>
+                  <li><a href="profile-mostrar-pedidos.php">HISTORIAL DE PEDIDOS</a></li>
+
           </ul>
           <form id="form-cerrar-sesion" action="profile-editar_perfil.php" method="POST">
             <input id="cerrarsesion" type="submit" value="CERRAR SESION" name="sentclose">

@@ -15,6 +15,7 @@
       mysqli_real_escape_string(mysqli_connect(),trim($idUsuario)));
           mysqli_query($conexion,$crear) or die("No jala");
   }
+
 //Todo meco haciendo una mexicanada, como me odio.
   function faramallaMeca($idUsuario,$conexion){
     $consulta  = mysqli_query($conexion,"SELECT id FROM tblordenes tbl1 WHERE tbl1.idUsuario = $idUsuario AND tbl1.fecha = (SELECT max(tbl2.fecha) FROM tblordenes tbl2 WHERE tbl2.idUsuario = tbl1.idUsuario)") or die(mysql_error());
@@ -24,6 +25,7 @@
     }
     return $id;
   }
+
 function calcularTotal($idOrden,$conexion){
   $consulta = mysqli_query($conexion,"SELECT total FROM tblordenesplatillos WHERE idOrden = $idOrden") or die(mysql_error());
   $sumaTotal = 0;
@@ -117,4 +119,38 @@ function calcularTotal($idOrden,$conexion){
 
     }
   
+    function obtenerDestinatario($idOrden,$conexion){
+
+       $consulta = mysqli_query($conexion,"SELECT * FROM datosdestinatario WHERE idOrden = $idOrden") or die(mysql_error());
+
+       return $consulta;
+    }
+
+
+    function obtenerDatosOrden($idOrden, $conexion){
+
+    $consulta = mysqli_query($conexion,"SELECT * FROM tblordenes WHERE id = $idOrden") or die(mysql_error());
+
+       return $consulta;
+
+
+    }
+
+    function obtenerPlatillos($idOrden,$conexion){
+
+      $consulta = mysqli_query($conexion,"SELECT descripcion, cantidad, total FROM tblordenesplatillos WHERE IdOrden = $idOrden") or die(mysql_error());
+
+       return $consulta;
+
+    }
+
+
+    function obtenerTarjetas($conexion,$idUsuario){
+
+      $consulta = mysqli_query($conexion,"SELECT * FROM tbltarjetascredito WHERE idUsuario = $idUsuario") or die(mysql_error());
+
+      return $consulta;
+
+    }
+
  ?>

@@ -13,19 +13,26 @@
                 <div class="colum2">
 
                     <h2>Redes Sociales</h2>
-
-                    <div class="row1">
+                    <a href="https://www.facebook.com/Los-Takuchos-157951550933999/"><div class="row1">
                         <img src="icon/facebook.png">
                         <label>Siguenos en Facebook</label>
-                    </div>
-                    <div class="row1">
+                    </div></a>
+
+<a href="https://twitter.com/LosTakuchos">
+                      <div class="row1">
                         <img src="icon/twitter.png">
                         <label>Siguenos en Twitter</label>
-                    </div>
-                    <div class="row1">
+                    </div>  
+</a>
+
+<a href="https://www.instagram.com/LosTakuchos/">
+    
+                      <div class="row1">
                         <img src="icon/instagram.png">
                         <label>Siguenos en Instagram</label>
-                    </div>
+                    </div>  
+</a>
+
 
                 </div>
 

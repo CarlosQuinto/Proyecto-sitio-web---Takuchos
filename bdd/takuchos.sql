@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-05-2018 a las 22:31:36
+-- Tiempo de generación: 09-05-2018 a las 16:15:30
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -41,7 +41,10 @@ CREATE TABLE `datosdestinatario` (
 --
 
 INSERT INTO `datosdestinatario` (`id`, `Nombre`, `Apellido`, `Telefono`, `idOrden`) VALUES
-(1, 'Carlos', 'Carballo', '016221739331', 2);
+(1, 'Carlos', 'Carballo', '016221739331', 2),
+(2, 'Carlos', 'Carballo', '016221739331', 2),
+(3, 'Carlos', 'Carballo', '016221739331', 3),
+(4, 'Carlos', 'Carballo', '016221739331', 3);
 
 -- --------------------------------------------------------
 
@@ -56,15 +59,18 @@ CREATE TABLE `tblordenes` (
   `direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `referencias` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `total` double NOT NULL,
-  `formaPago` enum('Efectivo','Tarjeta de credito') COLLATE utf8_spanish_ci NOT NULL
+  `formaPago` enum('Efectivo','Tarjeta de credito') COLLATE utf8_spanish_ci NOT NULL,
+  `Folio` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tblordenes`
 --
 
-INSERT INTO `tblordenes` (`id`, `idUsuario`, `fecha`, `direccion`, `referencias`, `total`, `formaPago`) VALUES
-(2, 10, '2018-05-08 20:27:38', 'Calle 5 Ave. 6 Col. San Vicente', 'Bochito Verde', 40, 'Efectivo');
+INSERT INTO `tblordenes` (`id`, `idUsuario`, `fecha`, `direccion`, `referencias`, `total`, `formaPago`, `Folio`) VALUES
+(2, 1, '2018-05-09 12:47:05', 'Calle 5 Ave. 6 Col. San Vicente', 'maincra', 40, 'Efectivo', ''),
+(3, 1, '2018-05-09 13:38:37', 'Calle 5 Ave. 6 Col. San Vicente', 'Bochito Verde', 60, 'Tarjeta de credito', ''),
+(4, 1, '2018-05-09 14:08:30', '', '', 0, 'Efectivo', '');
 
 -- --------------------------------------------------------
 
@@ -86,8 +92,11 @@ CREATE TABLE `tblordenesplatillos` (
 --
 
 INSERT INTO `tblordenesplatillos` (`Id`, `IdPlatillo`, `IdOrden`, `total`, `cantidad`, `descripcion`) VALUES
-(1, 1, 2, 30, 3, 'Suadero'),
-(2, 8, 2, 10, 1, 'Agua de jamaica');
+(1, 1, 2, 10, 1, 'Suadero'),
+(2, 9, 2, 30, 3, 'Agua de melon'),
+(3, 1, 3, 10, 1, 'Suadero'),
+(4, 8, 3, 30, 3, 'Agua de jamaica'),
+(5, 4, 3, 20, 2, 'Longaniza');
 
 -- --------------------------------------------------------
 
@@ -129,11 +138,18 @@ INSERT INTO `tblplatillos` (`id`, `nombre`, `precio`, `descripcion`) VALUES
 CREATE TABLE `tbltarjetascredito` (
   `id` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
-  `Numero` int(16) NOT NULL,
+  `Numero` bigint(16) NOT NULL,
   `nombreCompleto` varchar(80) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `fechaExpiracion` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `fechaExpiracion` varchar(7) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `codigoSeguridad` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
+
+--
+-- Volcado de datos para la tabla `tbltarjetascredito`
+--
+
+INSERT INTO `tbltarjetascredito` (`id`, `idUsuario`, `Numero`, `nombreCompleto`, `fechaExpiracion`, `codigoSeguridad`) VALUES
+(1, 1, 2147483647, 'Carlos carballo', '27/20', 124);
 
 -- --------------------------------------------------------
 
@@ -155,8 +171,7 @@ CREATE TABLE `tblusuarios` (
 --
 
 INSERT INTO `tblusuarios` (`id`, `nombre`, `apellido`, `email`, `contrasena`, `telefono`) VALUES
-(10, 'Carlos', 'Carballo', 'carloscarballod2@gmail.com', '$2y$10$olIpcnkUQOun1GOeXy0pcOc1ciBsvoHDOlIDBo9Q/qo.5Y6GgaoGe', '6221739331'),
-(11, 'Carlos', 'Carballo', 'carloscarballod2@gmail.com', '$2y$10$eEVzr.w4hKGwRwtx4HDTzOUIWrHOWfly8NoUFr66lAKV.mWnlRTae', '6221739331');
+(1, 'Maincra', 'Steve', 'carloscarballod@gmail.com', '$2y$10$P.hs7SxE74Uf7oqUqcNSVu86fZ/urXQfk9q3bTkwdVUJhUdfRqgLK', '6221739331');
 
 --
 -- Índices para tablas volcadas
@@ -209,31 +224,31 @@ ALTER TABLE `tblusuarios`
 -- AUTO_INCREMENT de la tabla `datosdestinatario`
 --
 ALTER TABLE `datosdestinatario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tblordenes`
 --
 ALTER TABLE `tblordenes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tblordenesplatillos`
 --
 ALTER TABLE `tblordenesplatillos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tbltarjetascredito`
 --
 ALTER TABLE `tbltarjetascredito`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tblusuarios`
 --
 ALTER TABLE `tblusuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas

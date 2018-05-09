@@ -73,6 +73,10 @@ if (isset($_POST['sent'])) {
 				    <ul style="list-style: none;">
 						<li><a href="profile-editar_perfil.php">EDITAR PERFIL</a></li>
 					    <li><a href="profile-cambiar_contraseña.php">CAMBIAR CONTRASEÑA</a></li>
+			            <li><a href="profile-mostrar_tarjetas.php">TARJETAS</a></li>
+			            <li><a href="profile-mostrar-pedidos.php">HISTORIAL DE PEDIDOS</a></li>
+
+
 					 
 					 
 					</ul>
