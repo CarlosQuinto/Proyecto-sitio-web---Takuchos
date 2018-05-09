@@ -11,18 +11,27 @@
                 
               header("Location: login.php");
             } ?>	
-
+ <!-- enviar formulario -->
 <?php 
 if (isset($_POST['sent'])) {
+
+
 	$numerotarjeta = $_POST['numero'];
 	$nombreCompleto = $_POST['nombre'];
 	$fechaexpiracion= $_POST['fecha'];
 	$codigo = $_POST['codigo'];
 	$idUsuario = $_SESSION['userId'];
     
-   
-	registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion);
-	header("Location: profile-agregar_tarjeta.php");
+   	
+
+   	if (validarTarjeta($numerotarjeta) == true) {
+   		registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion);
+		header("Location: profile-agregar_tarjeta.php"); //tarjeta valida
+		
+   	}else{
+   		header("Location: profile-editar_perfil.php");//deve mostrar mensaje de error
+   	}
+	
 	
 }
 ?>

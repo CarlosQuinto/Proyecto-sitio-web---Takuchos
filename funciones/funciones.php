@@ -90,5 +90,31 @@ function calcularTotal($idOrden,$conexion){
      mysqli_query($conexion, $queryEditarInformacion ) or die("Lo sentimos ocurrio un error al intentar ejecutar el query");
 
   } 
+
+  function validarTarjeta($numerotarjeta)
+
+    {
+
+        $pattern_1 ='/^((4[0-9]{12})|(4[0-9]{15})|(5[1-5][0-9]{14})|(3[47][0-9]{13})|(6011[0-9]{12}))$/';
+
+        $pattern_2 = '/^((30[0-5][0-9]{11})|(3[68][0-9]{12})|(3[0-9]{15})|(2123[0-9]{12})|(1800[0-9]{12}))$/';
+
+ 
+
+        if (preg_match($pattern_1, $numerotarjeta)) {
+
+            return true;
+
+        } else if (preg_match($pattern_2, $numerotarjeta)) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    }
   
  ?>
