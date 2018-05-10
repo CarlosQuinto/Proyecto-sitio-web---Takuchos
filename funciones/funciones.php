@@ -172,7 +172,19 @@ if ($longitud =! 3) {
 }
 }
 
+ function validarSoloLetras($campo){
+      $filtro ='/[a-zA-Z]/';
 
+      if (preg_match($filtro, $campo)) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+    }
 
 
 

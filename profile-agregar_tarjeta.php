@@ -57,7 +57,8 @@ if (isset($_POST['sent'])) {
    	
 
    	if (validarTarjeta($numerotarjeta) == true) {
-   		registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion);
+if( validarSoloLetras($nombreCompleto) == true){
+   			registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion);
    		?>
 			<script type="text/javascript">
 				
