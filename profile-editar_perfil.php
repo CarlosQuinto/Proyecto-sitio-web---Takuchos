@@ -57,8 +57,10 @@
                   $idUsuario = $_SESSION['userId'];
                   if(validarSoloLetras($nombre) ==true && validarSoloLetras($apellido) ==true ){
                    
-                      editarInformacion($idUsuario,$nombre,$apellido,$telefono,$conexion);
+                      if(validarSoloNumeros($telefono)==true){
+                       editarInformacion($idUsuario,$nombre,$apellido,$telefono,$conexion);
                   session_destroy();
+
                       ?>
                       <script type="text/javascript">
                        
@@ -66,6 +68,17 @@
                       </script>
 
                       <?php
+                    }else{
+
+                     ?>
+                      <script type="text/javascript">
+                       
+                        alertify.error("Numero no valido.");
+                      </script>
+
+                      <?php
+
+                    }
 
                   }else{
                     ?>
