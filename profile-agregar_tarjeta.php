@@ -117,7 +117,7 @@ if (isset($_POST['sent'])) {
 
 				 	  	 <div>
 
-				 	  	 	<input id="campo" type="text" name="numero" />
+				 	  	 	<input id="campo" type="text" name="numero" maxlength="16"/>
 
 				 	  	 </div>
                          
