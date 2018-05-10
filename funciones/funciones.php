@@ -186,7 +186,19 @@ if ($longitud =! 3) {
         }
     }
 
+  function validarSoloNumeros($campo){
+      $filtro ='/[0-9]/';
 
+      if (preg_match($filtro, $campo)) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+    }
 
 
  ?>

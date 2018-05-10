@@ -57,7 +57,9 @@ if (isset($_POST['sent'])) {
    	
 
    	if (validarTarjeta($numerotarjeta) == true) {
-if( validarSoloLetras($nombreCompleto) == true){
+            	if( validarSoloLetras($nombreCompleto) == true){
+   			if(validarSoloNumeros($codigo)== true){
+               
    			registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion);
    		?>
 			<script type="text/javascript">
@@ -67,6 +69,29 @@ if( validarSoloLetras($nombreCompleto) == true){
 
    		<?php
 		header("Location: profile-agregar_tarjeta.php"); //tarjeta valida
+
+
+   			}else{
+   				?>
+
+			<script type="text/javascript">
+				
+				alertify.error("Codigo invalido.")
+			</script>
+
+   		<?php 
+   			}
+   		}else{
+   			?>
+
+			<script type="text/javascript">
+				
+				alertify.error("Nombre invalido.")
+			</script>
+
+   		<?php 
+   		}
+   		
 		
    	}else{
    		?>
