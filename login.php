@@ -57,12 +57,12 @@
 
 <?php 
 if (isset($_POST['sent'])) {
-	$nombre = trim($_POST['nombre']);
-	$apellidos = trim($_POST['apellidos']);
-	$telefono = trim($_POST['telefono']);
-	$email = trim($_POST['email']);
-	$password = trim($_POST['password']);
-	$cpassword = trim($_POST['cpassword']);
+	$nombre = mysqli_real_escape_string($conexion,trim($_POST['nombre']));
+	$apellidos = mysqli_real_escape_string($conexion,trim($_POST['apellidos']));
+	$telefono = mysqli_real_escape_string($conexion,trim($_POST['telefono']));
+	$email = mysqli_real_escape_string($conexion,trim($_POST['email']));
+	$password = mysqli_real_escape_string($conexion,trim($_POST['password']));
+	$cpassword = mysqli_real_escape_string($conexion,trim($_POST['cpassword']));
 
 
 	$existe = confirmarExistenciaEmail($conexion,$email);
@@ -149,18 +149,18 @@ if (isset($_POST['sent'])) {
 					 	  			<div>
 					 	  	 			<label id="correo" for="email">Correo:</label>
 					 	  				<div class="col-lg-12">
-					 	  	 				<input id="campo" type="text" name="iemail" />
+					 	  	 				<input id="campo" type="email" name="iemail" placeholder="example@example.com" minlength="7" maxlength="50"/>
 					 	  	 			</div>
 					 	  			</div>         
 			                    	<div class="col-lg-12">
 			                      		<label id="contrasena" for="password">Contraseña:</label>
 			                      	 	<div>
-			                      		<input id="campo" type="password" name="ipassword" />
+			                      		<input id="campo" type="password" name="ipassword" minlength="8"/>
 			                      		</div>
 			                     	</div>
 				                    <div>
 				                    	<input id="ingresar" type="submit" name="ingresar" value="Ingresar">
-				                        <button id="resetPassword" name="resetPassword" >¿Olvidaste tu contraseña?</button>
+				                        
 				                    </div>
 	                    		</form>
 	                 		</div>
@@ -172,7 +172,7 @@ if (isset($_POST['sent'])) {
 
 						<div class="col-lg-4 borde" id="contenido-registrarse"> 
 	                		 <div>
-	                 			 <h2 id="contenido-titulos">Iniciar sesión</h2></div>
+	                 			 <h2 id="contenido-titulos">Registrarse</h2></div>
 	                		 <div>
 				       		<div>
 				       	 		<p id="descripcion-r"><strong>Con tu cuenta podras estar mas al tanto de las promociones de "Los Takuchos"</strong></p>
@@ -182,37 +182,37 @@ if (isset($_POST['sent'])) {
 		                     		<div>
 		                      	  		<label id="nombre" for="nombre">Nombre:</label>
 		                      	   		<div>
-		                      				<input id="campo" type="text" name="nombre" />
+		                      				<input id="campo" type="text" name="nombre" maxlength="40"/>
 		                      	 		</div>
 		                         	</div>
 		                        	<div>
 		                      	  		<label id="apellidos" for="apellidos">Apellidos:</label>
 		                      	  		<div>
-		                      				<input id="campo" type="text" name="apellidos" />
+		                      				<input id="campo" type="text" name="apellidos" maxlength="40"  />
 		                      			</div>
 		                         	</div>
 		                     	 	<div>
 						 	  	 		<label id="telefono" for="telefono">Telefono:</label>
 						 	  	 		<div >
-						 	  	 			<input id="campo" type="text" name="telefono" />
+						 	  	 			<input id="campo" type="text" name="telefono" placeholder="(###)###-####" maxlength="13" minlength="13"/>
 						 	  			</div>
 						 	     	</div>
 		                     	 	<div>
 						 	  			<label id="correo" for="email">Correo:</label>
 						 	  			<div >
-						 	  	 			<input id="campo" type="text" name="email" />
+						 	  	 			<input id="campo" type="email" name="email" placeholder="example@example.com" maxlength="50" minlength="7"/>
 						 	  			</div>
 						 	     	</div>
 		                     		<div>
 		                      			<label id="contrasena" for="password">Contraseña:</label>
 		                      	 	<div>
-		                      			<input id="campo" type="password" name="password" />
+		                      			<input id="campo" type="password" name="password" minlength="8" />
 		                      		</div>
 		                      		</div>
 		                      		<div>
 		                      			<label id="confircontrasena" for="cpassword">Confirmar contraseña:</label>
 		                      	 		<div>
-		                      				<input id="campo" type="password" name="cpassword" />
+		                      				<input id="campo" type="password" name="cpassword" minlength="8"/>
 		                      	 		</div>
 		                     		</div>
 		                     		<div>

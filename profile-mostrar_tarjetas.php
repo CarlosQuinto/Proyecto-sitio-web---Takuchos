@@ -19,6 +19,15 @@
 				$consulta = obtenerTarjetas($conexion,$idUsuario);
 			 ?>
 
+            <?php 
+            if (isset($_POST['sentclose'])) {
+              
+             session_destroy();
+             
+             }
+
+            ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -45,12 +54,12 @@
                   <li><a href="profile-mostrar-pedidos.php">HISTORIAL DE PEDIDOS</a></li>
 
           </ul>
-          <form id="form-cerrar-sesion" action="profile-editar_perfil.php" method="POST">
+          <form id="form-cerrar-sesion" method="POST">
             <input id="cerrarsesion" type="submit" value="CERRAR SESION" name="sentclose">
           </form>
      </div>
-     <div id="contenidotablatarjetas"class="col-lg-8" >
-     	<div class="col-lg-2"></div>
+     <div id="contenidotablatarjetas" class="col-lg-8" >
+     	
 
 	
 		<div class="col-lg-8">

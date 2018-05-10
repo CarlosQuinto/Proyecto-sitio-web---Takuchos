@@ -11,31 +11,7 @@
                 
               header("Location: login.php");
             } ?>	
- <!-- enviar formulario -->
-<?php 
-if (isset($_POST['sent'])) {
-
-
-	$numerotarjeta = $_POST['numero'];
-	$nombreCompleto = $_POST['nombre'];
-	$fechaexpiracion= $_POST['fecha'];
-	$codigo = $_POST['codigo'];
-	$idUsuario = $_SESSION['userId'];
-    
-   	
-
-   	if (validarTarjeta($numerotarjeta) == true) {
-   		registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion);
-		header("Location: profile-agregar_tarjeta.php"); //tarjeta valida
-		
-   	}else{
-   		header("Location: profile-editar_perfil.php");//deve mostrar mensaje de error
-   	}
-	
-	
-}
-?>
-
+ 
  <!-- cerrar la sesion -->
             <?php 
             if (isset($_POST['sentclose'])) {
@@ -59,10 +35,54 @@ if (isset($_POST['sent'])) {
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 			<link rel="stylesheet" href="css/style.css"/>
 			<link rel="stylesheet" href="css/stilosperfil.css"/>
+		<link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+		<link rel="stylesheet" type="text/css" href="alertifyjs/css/themes/default.css">
+		<script src="alertifyjs/alertify.js"></script>
 			
 
 	</head>
 		<body>
+
+<!-- enviar formulario -->
+<?php 
+if (isset($_POST['sent'])) {
+
+
+	$numerotarjeta = $_POST['numero'];
+	$nombreCompleto = $_POST['nombre'];
+	$fechaexpiracion= $_POST['fecha'];
+	$codigo = $_POST['codigo'];
+	$idUsuario = $_SESSION['userId'];
+    
+   	
+
+   	if (validarTarjeta($numerotarjeta) == true) {
+   		registrarTarjeta($idUsuario,$numerotarjeta,$nombreCompleto,$fechaexpiracion,$codigo,$conexion);
+   		?>
+			<script type="text/javascript">
+				
+				alertify.success("Tarjeta agrega.");
+			</script>
+
+   		<?php
+		header("Location: profile-agregar_tarjeta.php"); //tarjeta valida
+		
+   	}else{
+   		?>
+
+			<script type="text/javascript">
+				
+				alertify.error("Tarjeta inválida.")
+			</script>
+
+   		<?php  
+
+   	}
+	
+	
+}
+?>
+
 
 			<?php include('includes/header.php') ?>
                        <div id="contenido-a-t" class="col-xs-12" >
@@ -89,7 +109,7 @@ if (isset($_POST['sent'])) {
     			       <div id="titulo-tarjeta" class="col-xs-12">
           		       <h3>AGREGAR TARJETA</h2>
           	            </div>
-    			      <form id="form-agregar-tarjeta" action="profile-agregar_tarjeta.php" method="POST">
+    			      <form id="form-agregar-tarjeta" method="POST">
 
     			    <div>
 
@@ -120,7 +140,7 @@ if (isset($_POST['sent'])) {
 
 				 	  	 <div>
 
-				 	  	 	<input id="campo" type="text" name="fecha" placeholder="Mes/Año" />
+				 	  	 	<input id="campo" type="text" name="fecha" placeholder="Mes/Año" minlength="7" maxlength="7"/>
 
 				 	  	 </div>
                          
@@ -131,7 +151,7 @@ if (isset($_POST['sent'])) {
 
 				 	  	 <div>
 
-				 	  	 	<input id="campo" type="text" name="codigo" />
+				 	  	 	<input id="campo" type="text" name="codigo" minlength="3" maxlength="4"/>
 
 				 	  	 </div>
                          
@@ -164,3 +184,13 @@ if (isset($_POST['sent'])) {
  
 		</body>
 </html>
+
+
+
+            <?php 
+            if (isset($_POST['sentclose'])) {
+              
+             session_destroy();
+             }
+
+            ?>

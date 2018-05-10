@@ -67,7 +67,7 @@
                   <li><a href="profile-mostrar-pedidos.php">HISTORIAL DE PEDIDOS</a></li>
 
           </ul>
-          <form id="form-cerrar-sesion" action="profile-editar_perfil.php" method="POST">
+          <form id="form-cerrar-sesion" method="POST">
             <input id="cerrarsesion" type="submit" value="CERRAR SESION" name="sentclose">
           </form>
                </div>
@@ -95,7 +95,7 @@
                  <div>
    				  <label id="telefono" for="telefono">Telefono:</label>
    				   <div>
-   				   	<input id="campo" type="text" name="telefono" />
+   				   	<input id="campo" type="text" name="telefono" placeholder="(###)###-####" />
    				   </div>
                 </div>
 

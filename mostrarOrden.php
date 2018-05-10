@@ -115,9 +115,6 @@
 				<td>
 					Total $
 				</td>
-				<td>
-					Número de compra
-				</td>
  			</tr>
  		</thead>
 		

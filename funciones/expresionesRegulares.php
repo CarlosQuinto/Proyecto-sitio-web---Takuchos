@@ -20,4 +20,15 @@ function confirmarExistenciaEmail($conexion,$email){
 	 }
 
 }
+
+
+function validarTelefono(){
+
+
+
+
+
+}
+
+
 ?>

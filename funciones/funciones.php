@@ -153,4 +153,28 @@ function calcularTotal($idOrden,$conexion){
 
     }
 
+    function ordenesUsuario($conexion, $idUsuario){
+
+      $consulta = mysqli_query($conexion, "SELECT id FROM tblordenes WHERE idUsuario = $idUsuario") or die(mysql_error());
+
+      return $consulta;
+
+    }
+
+    function longitudPin($pin){
+
+$longitud = strlen($pin);
+
+if ($longitud =! 3) {
+  return true;
+}else{
+  return false;
+}
+}
+
+
+
+
+
+
  ?>
