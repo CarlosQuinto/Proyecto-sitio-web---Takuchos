@@ -100,7 +100,7 @@
 		    			  
 				 	  	 <label id="cantidad">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoSuadero" />
+				 	  	 <input id="campos-menu" type="number" name="campoSuadero" min="0" max="5" />
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-suadero" value="Agregar" onclick="anadirCarrito(10, 'campoSuadero','Suadero', '<?php echo $lastId ?>');">
 				 	  	 </div>
@@ -118,7 +118,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="adobada">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoAdobada" />
+				 	  	 <input id="campos-menu" type="number" name="campoAdobada" min="0" max="5" />
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" value="Agregar" name="orden-adobada" onclick="anadirCarrito(10,'campoAdobada','Adobada', '<?php echo $lastId ?>');">
 		    		  </div>
@@ -137,7 +137,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="mixto">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoMixto" />
+				 	  	 <input id="campos-menu" type="number" name="campoMixto" min="0" max="5"/>
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-mixto" value="Agregar" onclick="anadirCarrito(18,'campoMixto','Mixto', '<?php echo $lastId ?>');">
 		    			
@@ -156,7 +156,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="longaniza">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoLonganiza" />
+				 	  	 <input id="campos-menu" type="number" name="campoLonganiza" min="0" max="5"/>
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-longaniza" value="Agregar" onclick="anadirCarrito(10,'campoLonganiza','Longaniza', '<?php echo $lastId ?>');">
 		    			
@@ -178,7 +178,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="chicharronsv">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoChicharronsv" />
+				 	  	 <input id="campos-menu" type="number" name="campoChicharronsv" min="0" max="5"/>
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-chicharronsv" value="Agregar" onclick="anadirCarrito(10,'campoChicharronsv','ChicharronSV', '<?php echo $lastId ?>');">
 		    			
@@ -201,7 +201,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="chicharronss">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoChicharronss" />
+				 	  	 <input id="campos-menu" type="number" name="campoChicharronss" min="0" max="5" />
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-chicharronss" value="Agregar" onclick="anadirCarrito(10,'campoChicharronss','ChicharronSR', '<?php echo $lastId ?>');">
 		    		  </div>
@@ -236,7 +236,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="horchata">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoHorchata" />
+				 	  	 <input id="campos-menu" type="number" name="campoHorchata" min="0" max="5"/>
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-horchata" value="Agregar" onclick="anadirCarrito(10,'campoHorchata','Agua de horchata', '<?php echo $lastId ?>');">
 		    			
@@ -254,7 +254,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="jamaica">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoJamaica" />
+				 	  	 <input id="campos-menu" type="number" name="campoJamaica" min="0" max="5"/>
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-jamaica" value="Agregar" onclick="anadirCarrito(10,'campoJamaica','Agua de jamaica', '<?php echo $lastId ?>');">
 		    			 
@@ -272,7 +272,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="melon">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoMelon" />
+				 	  	 <input id="campos-menu" type="number" name="campoMelon" min="0" max="5" />
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-melon" value="Agregar" onclick="anadirCarrito(10,'campoMelon','Agua de melon', '<?php echo $lastId ?>');">
 		    			 
@@ -290,7 +290,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="tedelimon">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoTedelimon" />
+				 	  	 <input id="campos-menu" type="number" name="campoTedelimon" min="0" max="5" />
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-tedelimon" value="Agregar" onclick="anadirCarrito(10,'campoTedelimon','Te de limon', '<?php echo $lastId ?>');">
 		    			 
@@ -311,7 +311,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="cocacolav">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoCocacolav" />
+				 	  	 <input id="campos-menu" type="number" name="campoCocacolav" min="0" max="5" />
 				 	  	 
 				 	  	 <input id="botones-menu" type="button" name="orden-cocacolav"  value="Agregar" onclick="anadirCarrito(10,'campoCocacolav','Coca Cola 500 ml', '<?php echo $lastId ?>');">
 		    			 
@@ -333,7 +333,7 @@
 		    			  
 				 	  	 <label id="cantidad" for="cocacola">Cantidad:</label>
 				 	  	 
-				 	  	 <input id="campos-menu" type="number" name="campoCocacola" />
+				 	  	 <input id="campos-menu" type="number" name="campoCocacola" min="0" max="5" />
 				 	  	 
 					 	  	 <input id="botones-menu" type="button" name="orden-cocacola" value="Agregar" onclick="anadirCarrito(15,'campoCocacola','Coca Cola 600 ml', '<?php echo $lastId ?>');">
 		    			 
