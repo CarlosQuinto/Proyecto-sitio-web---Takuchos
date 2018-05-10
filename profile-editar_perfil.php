@@ -13,19 +13,7 @@
 
             } ?>  
 
-            <!-- editar informacion -->
-            <?php 
-               if (isset($_POST['sent'])) {
-                  $nombre = $_POST['nombre'];
-                  $apellido = $_POST['apellido'];
-                 $telefono= $_POST['telefono'];
-  
-                  $idUsuario = $_SESSION['userId'];
-    
-                  editarInformacion($idUsuario,$nombre,$apellido,$telefono,$conexion);
-                  session_destroy();
-               }
-            ?>
+         
  <!-- cerrar la sesion -->
             <?php 
             if (isset($_POST['sentclose'])) {
@@ -49,10 +37,51 @@
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 			<link rel="stylesheet" href="css/style.css"/>
 			<link rel="stylesheet" href="css/stilosperfil.css"/>
+      <link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+      <link rel="stylesheet" type="text/css" href="alertifyjs/css/themes/default.css">
+     <script src="alertifyjs/alertify.js"></script>
+      
 			
 
 	</head>
 		<body>
+
+
+ <!-- editar informacion -->
+            <?php 
+               if (isset($_POST['sent'])) {
+                  $nombre = $_POST['nombre'];
+                  $apellido = $_POST['apellido'];
+                 $telefono= $_POST['telefono'];
+  
+                  $idUsuario = $_SESSION['userId'];
+                  if(validarSoloLetras($nombre) ==true && validarSoloLetras($apellido) ==true ){
+                   
+                      editarInformacion($idUsuario,$nombre,$apellido,$telefono,$conexion);
+                  session_destroy();
+                      ?>
+                      <script type="text/javascript">
+                       
+                        alertify.success("Información actualizada.");
+                      </script>
+
+                      <?php
+
+                  }else{
+                    ?>
+
+                     <script type="text/javascript">
+                       
+                       alertify.error("Nombre no valido.")
+                     </script>
+
+                     <?php 
+                   
+                  }
+    
+                 
+               }
+            ?>
 
 			<?php include('includes/header.php') ?>
                

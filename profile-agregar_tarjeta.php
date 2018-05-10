@@ -76,7 +76,7 @@ if (isset($_POST['sent'])) {
 
 			<script type="text/javascript">
 				
-				alertify.error("Codigo invalido.")
+				alertify.error("Codigo no valido.")
 			</script>
 
    		<?php 
@@ -86,7 +86,7 @@ if (isset($_POST['sent'])) {
 
 			<script type="text/javascript">
 				
-				alertify.error("Nombre invalido.")
+				alertify.error("Nombre no valido.")
 			</script>
 
    		<?php 
